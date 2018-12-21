@@ -30,7 +30,7 @@
             android:name="com.amov.reversi.MainActivityGame"
             android:label="@string/MainActivityGameTitle"
             android:screenOrientation="portrait">
-            
+
         </activity>
 
     </application>
