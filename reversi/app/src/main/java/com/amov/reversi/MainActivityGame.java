@@ -2,6 +2,7 @@ package com.amov.reversi;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivityGame extends Activity {
 
@@ -27,6 +28,14 @@ public class MainActivityGame extends Activity {
 
 
     }
+
+
+    public void onExit(View v){
+
+        finish();
+    }
+
+
 
 
 

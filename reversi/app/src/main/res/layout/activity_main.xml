@@ -1,59 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/backPanel"
+
+<android.support.v7.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    tools:layout_editor_absoluteY="81dp">
+    android:background="@color/dark_gray"
+    >
 
     <TextView
         android:id="@+id/txtTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="REVERSI GAME"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@color/cornflower_blue"
+        android:gravity="top"
+        android:text="Choose your option:"
+        android:textAlignment="center"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large"
+        android:textColor="@color/dark_green"
+        android:visibility="visible" />
+
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btnMulti"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:onClick="onMulti"
         android:text="Multiplayer (Local)"
-        app:layout_constraintStart_toStartOf="@+id/btnLocal"
-        app:layout_constraintTop_toBottomOf="@+id/btnLocal" />
+        android:textAppearance="@android:style/TextAppearance.Holo.Medium"
+        android:visibility="visible"/>
 
     <Button
         android:id="@+id/btnLocal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="40dp"
+        android:onClick="onLocal"
         android:text="Vs. Computer"
-        app:layout_constraintStart_toStartOf="@+id/txtTitle"
-        app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+        android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
 
     <Button
         android:id="@+id/btnClient"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
+        android:onClick="onClient"
         android:text="Multiplayer (Client)"
-        app:layout_constraintStart_toStartOf="@+id/btnMulti"
-        app:layout_constraintTop_toBottomOf="@+id/btnMulti" />
+        android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
 
     <Button
         android:id="@+id/btnServer"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:onClick="onServer"
         android:text="Multiplayer (Server)"
-        app:layout_constraintStart_toStartOf="@+id/btnClient"
-        app:layout_constraintTop_toBottomOf="@+id/btnClient" />
+        android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
 
-</android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.LinearLayoutCompat>
