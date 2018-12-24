@@ -1,8 +1,12 @@
 package com.amov.reversi;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivityGame extends Activity {
 
@@ -19,6 +23,11 @@ public class MainActivityGame extends Activity {
 
     int mode = SERVER;
 
+    public ArrayList<Cell> listaCelulas;//se calhar nao arraylist?
+    //quero uma especie de tabela 8*8
+    //data formats?
+
+
 
 
     @Override
@@ -27,7 +36,32 @@ public class MainActivityGame extends Activity {
         setContentView(R.layout.activity_game);
 
 
+
+        //new Cell(this, R.id.btn0_0);
+
+
+        /*MUDAR PARA PRETO (SAMPLE)
+        *
+        * celula.changeBlack();
+        * findViewById(celula.getIdCelula).setBackgroundResource(R.drawable.black_circle);
+        * */
     }
+
+
+
+
+    /*
+        findViewById(R.id.btn3_3).setBackgroundResource(R.drawable.white_circle);
+        findViewById(R.id.btn3_4).setBackgroundResource(R.drawable.black_circle);
+        findViewById(R.id.btn4_3).setBackgroundResource(R.drawable.black_circle);
+        findViewById(R.id.btn4_4).setBackgroundResource(R.drawable.white_circle);
+
+      celulas iniciais para por as pecas
+      3-3 branco, 3-4 preto, 4-3 preto, 4-4 branco
+
+    * */
+
+
 
 
     public void onExit(View v){

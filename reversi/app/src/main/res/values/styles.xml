@@ -4,8 +4,8 @@
     <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
         <!-- Customize your theme here. -->
 
-
-        <item name="android:navigationBarColor">@color/dark_gray</item>
+        <item name="android:colorPrimary">@color/forest_green</item>
+        <item name="android:navigationBarColor">@color/forest_green</item>
     </style>
 
 </resources>
