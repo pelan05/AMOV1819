@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">Reversi</string>
     <string name="MainActivityGameTitle">Good Luck!</string>
-
 </resources>

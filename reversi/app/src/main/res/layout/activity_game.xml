@@ -1,18 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<android.support.v7.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/outerlinear"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivityGame"
-    >
+    android:orientation="vertical"
+    tools:context=".MainActivityGame">
 
 
     <!--
     insert main game appearance here
     -->
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TableRow android:id="@+id/tableRow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageButton
+                android:layout_weight="1"
+                />
+
+            <ImageButton
+                android:layout_weight="1"
+                />
+
+            <ImageButton
+                android:layout_weight="1"
+                />
+
+            <ImageButton
+                android:layout_weight="1"
+                />
+
+            <ImageButton
+                android:layout_weight="1"
+                />
+
+            <ImageButton
+                android:layout_weight="1"
+                />
+
+            <ImageButton
+                android:layout_weight="1"
+                />
+
+            <ImageButton
+                android:layout_weight="1"
+                />
+
+
+
+        </TableRow>
+
+    </TableLayout>
 
 
     <Button
@@ -26,5 +75,5 @@
         android:textAlignment="center"
         android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
 
-</android.support.v7.widget.LinearLayoutCompat>
+</LinearLayout>
 
