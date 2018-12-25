@@ -23,7 +23,7 @@
     <TableLayout
         android:id="@+id/tableLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TableRow android:id="@+id/tableRow"
@@ -89,7 +89,8 @@
             <ImageButton
                 android:id="@+id/btn1-0"
                 android:layout_weight="1"
-                android:background="@android:drawable/checkbox_off_background" />
+                android:background="@android:drawable/checkbox_off_background"
+                android:onClick="onClickGameButton" />
 
             <ImageButton
                 android:id="@+id/btn1-1"

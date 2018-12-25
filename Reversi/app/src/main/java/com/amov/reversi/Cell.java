@@ -22,9 +22,9 @@ public class Cell {
 
     }
 
-    public int getIdCelula(){
-        return this.idCelula
-    }
+    public int getIdCelula(){ return this.idCelula; }
+
+    public int getCellValue() { return this.cellValue; }
 
     public void changeBlack(){
         this.cellValue = 2;
