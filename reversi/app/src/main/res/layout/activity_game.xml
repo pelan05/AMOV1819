@@ -4,6 +4,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/outerlinear"
+    android:background="@color/light_pink"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -596,6 +597,71 @@
     </TableLayout>
 
 </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/forest_green">
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutScore"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:layout_weight="1"
+            android:id="@+id/imgViewBlack"
+            android:src="@drawable/ic_black_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/txtViewBlack"
+            android:text=": 0"
+            android:textSize="28dp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:layout_weight="1"
+            android:id="@+id/imdViewWhite"
+            android:src="@drawable/ic_white_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/txtViewWhite"
+            android:text=": 0"
+            android:textStyle="bold"
+            android:textSize="28dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+
+        <Button
+            android:id="@+id/btnGameBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Reversi" />
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/forest_green">
+
+    </LinearLayout>
+
+
 
     <Button
         android:id="@+id/btnQuit"
