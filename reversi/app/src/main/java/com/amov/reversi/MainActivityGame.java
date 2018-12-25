@@ -10,6 +10,7 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainActivityGame extends Activity {
 
@@ -44,14 +45,17 @@ public class MainActivityGame extends Activity {
     //data formats?
 
 
-    TextView textWhite = (TextView) findViewById(R.id.txtViewWhite);
-    TextView textBlack = (TextView) findViewById(R.id.txtViewBlack);
+    TextView textWhite;
+    TextView textBlack;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        this.textWhite = (TextView) findViewById(R.id.txtViewWhite);
+        this.textBlack = (TextView) findViewById(R.id.txtViewBlack);
 
         int k = 0;                          //inicialização de array de celulas
         for (int i = 0; i < 8 ; i++) {
@@ -60,6 +64,18 @@ public class MainActivityGame extends Activity {
                 k++;
             }
         }
+
+
+
+        grid[3][3].changeWhite();
+        findViewById(R.id.btn3_3).setBackgroundResource(R.drawable.ic_white_circle);
+        grid[3][4].changeBlack();
+        findViewById(R.id.btn3_4).setBackgroundResource(R.drawable.ic_black_circle);
+        grid[4][3].changeBlack();
+        findViewById(R.id.btn4_3).setBackgroundResource(R.drawable.ic_black_circle);
+        grid[4][4].changeWhite();
+        findViewById(R.id.btn4_4).setBackgroundResource(R.drawable.ic_white_circle);
+
 
 
         //codigo check cells
@@ -72,16 +88,8 @@ public class MainActivityGame extends Activity {
             }
         }
 
-
-        textWhite.setText(Integer.toString(counterWhite));
-        textBlack.setText(Integer.toString(counterBlack));
-
-
-        findViewById(R.id.btn3_3).setBackgroundResource(R.drawable.ic_white_circle);
-        findViewById(R.id.btn3_4).setBackgroundResource(R.drawable.ic_black_circle);
-        findViewById(R.id.btn4_3).setBackgroundResource(R.drawable.ic_black_circle);
-        findViewById(R.id.btn4_4).setBackgroundResource(R.drawable.ic_white_circle);
-
+        textWhite.setText(String.format(Locale.US,": %d", counterWhite));
+        textBlack.setText(String.format(Locale.US, ": %d", counterBlack));
 
         /*MUDAR PARA PRETO (SAMPLE)
          * grid[1][1].changeBlack();
