@@ -57,10 +57,10 @@ public class MainActivityGame extends Activity {
         }
 
 
-        findViewById(R.id.btn3_3).setBackgroundResource(R.drawable.white_circle);
-        findViewById(R.id.btn3_4).setBackgroundResource(R.drawable.black_circle);
-        findViewById(R.id.btn4_3).setBackgroundResource(R.drawable.black_circle);
-        findViewById(R.id.btn4_4).setBackgroundResource(R.drawable.white_circle);
+        findViewById(R.id.btn3_3).setBackgroundResource(R.drawable.ic_white_circle);
+        findViewById(R.id.btn3_4).setBackgroundResource(R.drawable.ic_black_circle);
+        findViewById(R.id.btn4_3).setBackgroundResource(R.drawable.ic_black_circle);
+        findViewById(R.id.btn4_4).setBackgroundResource(R.drawable.ic_white_circle);
 
 
         /*MUDAR PARA PRETO (SAMPLE)
