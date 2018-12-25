@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -41,6 +44,8 @@ public class MainActivityGame extends Activity {
     //data formats?
 
 
+    TextView textWhite = (TextView) findViewById(R.id.txtViewWhite);
+    TextView textBlack = (TextView) findViewById(R.id.txtViewBlack);
 
 
     @Override
@@ -55,6 +60,21 @@ public class MainActivityGame extends Activity {
                 k++;
             }
         }
+
+
+        //codigo check cells
+        int counterWhite = 50, counterBlack = 50;
+        for (int i = 0; i < 64 ; i++) {
+            if(findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_white_circle).getConstantState())){
+                counterWhite++;
+            }else if(findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_black_circle).getConstantState())){
+                counterBlack++;
+            }
+        }
+
+
+        textWhite.setText(Integer.toString(counterWhite));
+        textBlack.setText(Integer.toString(counterBlack));
 
 
         findViewById(R.id.btn3_3).setBackgroundResource(R.drawable.ic_white_circle);
@@ -77,6 +97,25 @@ public class MainActivityGame extends Activity {
 
 
     public void onClickGameButton(View v){
+        int x = 0, y = 0;
+
+        for (int i = 0; i < 8 ; i++) {
+            for (int j = 0; j < 8 ; j++) {
+                if(v.getId() == grid[i][j].getIdCelula()){
+                    x = i;
+                    y = j;
+                }
+            }
+        }
+
+
+        //verificaCoords se é jogada valida
+
+        //calcula trocas de cor
+
+        //atualiza counters
+
+        //proxima jogada( , )
 
     }
 
@@ -84,7 +123,15 @@ public class MainActivityGame extends Activity {
 
 
 
+    public void onReversi(View v){
 
+        Context context = getApplicationContext();
+        CharSequence text = "REVERSI selected";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
 
     public void onExit(View v){
 

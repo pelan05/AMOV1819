@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Reversi</string>
     <string name="MainActivityGameTitle">Good Luck!</string>
+    <string name="buttonTextDescriptor">gameButton</string>
+    <string name="exitButton">Exit Game</string>
+    <string name="initialScore">: 2</string>
 </resources>
