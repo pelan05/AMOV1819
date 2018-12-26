@@ -5,4 +5,9 @@
     <string name="exitButton">Exit Game</string>
     <string name="initialScore">: 2</string>
     <string name="skip">Skip</string>
+    <string name="invalid">Invalid Move!</string>
+    <string name="blackWon">Congratulations, black won</string>
+    <string name="whiteWon">Congratulations, white won</string>
+    <string name="blackTurn">Black\'s move</string>
+    <string name="whiteTurn">White\'s move</string>
 </resources>

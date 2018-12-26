@@ -29,9 +29,11 @@ public class MainActivityGame extends Activity {
 
     int mode = SERVER;
 
-    public int moveCounter = 0;
+    public int moveCounterWhite = 0;
+    public int moveCounterBlack = 0;
     public boolean hasUsedReversi = false;
     public boolean hasUsedSkip = false;
+    public boolean isWhitesTurn = false;
 
     public int[] btnList= {//array de ids de botao
             R.id.btn0_0, R.id.btn0_1, R.id.btn0_2, R.id.btn0_3, R.id.btn0_4, R.id.btn0_5, R.id.btn0_6, R.id.btn0_7,
@@ -46,13 +48,10 @@ public class MainActivityGame extends Activity {
 
     public Cell[][] grid = new Cell[8][8];
 
-    //public ArrayList<Cell> listaCelulas;//se calhar nao arraylist?
-    //quero uma especie de tabela 8*8
-    //data formats?
-
-
+    BoardChecker checker;
     TextView textWhite;
     TextView textBlack;
+    TextView infoBox;
     Button btnGameBack;
     Button btnSkip;
 
@@ -66,12 +65,12 @@ public class MainActivityGame extends Activity {
         btnGameBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(moveCounter >= 5 && !hasUsedReversi) {
+                if(moveCounterBlack >= 5 || moveCounterWhite >= 5 && !hasUsedReversi) {
                     //reversiProcedure
 
                     btnGameBack.setBackgroundColor(getResources().getColor(R.color.red));
                     hasUsedReversi = true;
-                }else if(moveCounter < 5){
+                }else if(moveCounterBlack < 5 || moveCounterWhite <5){
                     Context context = getApplicationContext();
                     CharSequence text = "Available after 5th move";
                     int duration = Toast.LENGTH_SHORT;
@@ -92,12 +91,12 @@ public class MainActivityGame extends Activity {
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(moveCounter >= 5 && !hasUsedSkip) {
+                if(moveCounterWhite >= 5 || moveCounterBlack >= 5 && !hasUsedSkip) {
                     //skipProcedure
 
                     btnSkip.setBackgroundColor(getResources().getColor(R.color.red));
                     hasUsedSkip = true;
-                }else if(moveCounter < 5){
+                }else if(moveCounterWhite < 5 || moveCounterBlack < 5){
                     Context context = getApplicationContext();
                     CharSequence text = "Available after 5th move";
                     int duration = Toast.LENGTH_SHORT;
@@ -115,9 +114,11 @@ public class MainActivityGame extends Activity {
             }
         });
 
+        checker = new BoardChecker();
 
         this.textWhite = (TextView) findViewById(R.id.txtViewWhite);
         this.textBlack = (TextView) findViewById(R.id.txtViewBlack);
+        this.infoBox = (TextView) findViewById(R.id.txtInfo);
 
         int k = 0;                          //inicialização de array de celulas
         for (int i = 0; i < 8 ; i++) {
@@ -167,7 +168,11 @@ public class MainActivityGame extends Activity {
 
 
     public void onClickGameButton(View v){
-        this.moveCounter++;
+
+        if(isWhitesTurn)
+            this.moveCounterWhite++;
+        else
+            this.moveCounterBlack++;
 
         int x = 0, y = 0;
 
@@ -182,39 +187,77 @@ public class MainActivityGame extends Activity {
 
 
         //verificaCoords se é jogada valida
-
-        //calcula trocas de cor
-
-        //MUDA SELECAO PARA PRETO (temp)
-        grid[x][y].changeBlack();
-        findViewById(grid[x][y].getIdCelula()).setBackgroundResource(R.drawable.ic_black_circle);
-
-
-        //atualiza counters
-
-        //codigo check cells
-        int counterWhite = 0, counterBlack = 0;
-        for (int i = 0; i < 64 ; i++) {
-            if(findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_white_circle).getConstantState())){
-                counterWhite++;
-            }else if(findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_black_circle).getConstantState())){
-                counterBlack++;
+        if(checker.check(grid, x, y)){
+            //MUDA SELECAO
+            if(isWhitesTurn){
+                grid[x][y].changeWhite();
+                findViewById(grid[x][y].getIdCelula()).setBackgroundResource(R.drawable.ic_white_circle);
+            }else{
+                grid[x][y].changeBlack();
+                findViewById(grid[x][y].getIdCelula()).setBackgroundResource(R.drawable.ic_black_circle);
             }
+
+
+            //calcula trocas de cor
+
+
+
+            //atualiza counters
+            int counterWhite = 0, counterBlack = 0;
+            for (int i = 0; i < 64 ; i++) {
+                if(findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_white_circle).getConstantState())){
+                    counterWhite++;
+                }else if(findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_black_circle).getConstantState())){
+                    counterBlack++;
+                }
+            }
+
+            textWhite.setText(String.format(Locale.US,": %d", counterWhite));
+            textBlack.setText(String.format(Locale.US, ": %d", counterBlack));
+
+
+
+
+            //proxima jogada( , )
+            triggerTurn();
+            if(isWhitesTurn)
+                infoBox.setText(getResources().getString(R.string.whiteTurn));
+            else
+                infoBox.setText(getResources().getString(R.string.blackTurn));
+
+
+            //fim do jogo
+            if(counterBlack + counterWhite == 64)
+                if(counterWhite > counterBlack)
+                    infoBox.setText(getResources().getString(R.string.whiteWon));
+                else
+                    infoBox.setText(getResources().getString(R.string.blackWon));
+
+
+
+
+        }else{
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, getResources().getString(R.string.invalid), duration);
+            toast.show();
         }
 
-        textWhite.setText(String.format(Locale.US,": %d", counterWhite));
-        textBlack.setText(String.format(Locale.US, ": %d", counterBlack));
 
-
-
-
-        //proxima jogada( , )
 
     }
 
 
 
     public void skipMove(View v){
+        //TODO criar logica
+        if(isWhitesTurn)
+            moveCounterWhite--;
+        else
+            moveCounterBlack--;
+
+        triggerTurn();
+
 
         Context context = getApplicationContext();
         CharSequence text = "Skip move selected";
@@ -227,7 +270,7 @@ public class MainActivityGame extends Activity {
 
 
     public void onReversi(View v){
-
+        //TODO criar logica
         Context context = getApplicationContext();
         CharSequence text = "REVERSI selected";
         int duration = Toast.LENGTH_SHORT;
@@ -241,7 +284,12 @@ public class MainActivityGame extends Activity {
         finish();
     }
 
-
+    public void triggerTurn(){
+        if(isWhitesTurn)
+            isWhitesTurn = false;
+        else
+            isWhitesTurn = true;
+    }
 
 
 
