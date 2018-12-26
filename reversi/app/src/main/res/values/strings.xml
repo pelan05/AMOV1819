@@ -4,4 +4,5 @@
     <string name="buttonTextDescriptor">gameButton</string>
     <string name="exitButton">Exit Game</string>
     <string name="initialScore">: 2</string>
+    <string name="skip">Skip</string>
 </resources>

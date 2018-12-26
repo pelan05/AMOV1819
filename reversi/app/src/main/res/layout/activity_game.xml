@@ -21,7 +21,7 @@
     -->
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="300dp">
+    android:layout_height="350dp">
 
     <TableLayout
         android:id="@+id/tableLayout"
@@ -36,14 +36,18 @@
             android:layout_height="match_parent">
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn0-0"
                 android:layout_weight="1"
                 android:background="@android:drawable/checkbox_off_background" />
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn0-1"
@@ -51,7 +55,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn0-2"
@@ -59,7 +65,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn0-3"
@@ -67,7 +75,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn0-4"
@@ -75,7 +85,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn0-5"
@@ -83,7 +95,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn0-6"
@@ -91,7 +105,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn0-7"
@@ -106,15 +122,18 @@
             android:layout_height="match_parent">
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn1-0"
                 android:layout_weight="1"
-                android:background="@android:drawable/checkbox_off_background"
-                android:onClick="onClickGameButton" />
+                android:background="@android:drawable/checkbox_off_background"/>
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn1-1"
@@ -122,7 +141,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn1-2"
@@ -130,7 +151,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn1-3"
@@ -138,7 +161,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn1-4"
@@ -146,7 +171,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn1-5"
@@ -154,7 +181,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn1-6"
@@ -162,7 +191,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn1-7"
@@ -177,14 +208,18 @@
             android:layout_height="match_parent">
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn2-0"
                 android:layout_weight="1"
                 android:background="@android:drawable/checkbox_off_background" />
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:id="@+id/btn2-1"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
@@ -192,7 +227,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn2-2"
@@ -200,7 +237,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn2-3"
@@ -208,7 +247,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn2-4"
@@ -216,7 +257,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn2-5"
@@ -224,7 +267,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn2-6"
@@ -232,7 +277,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn2-7"
@@ -247,14 +294,18 @@
             android:layout_height="match_parent">
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn3-0"
                 android:layout_weight="1"
                 android:background="@android:drawable/checkbox_off_background" />
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn3-1"
@@ -262,7 +313,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn3-2"
@@ -270,7 +323,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn3-3"
@@ -278,7 +333,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn3-4"
@@ -286,7 +343,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn3-5"
@@ -294,7 +353,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn3-6"
@@ -302,7 +363,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn3-7"
@@ -317,14 +380,18 @@
             android:layout_height="match_parent">
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn4-0"
                 android:layout_weight="1"
                 android:background="@android:drawable/checkbox_off_background" />
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn4-1"
@@ -332,7 +399,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn4-2"
@@ -340,7 +409,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn4-3"
@@ -348,7 +419,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn4-4"
@@ -356,7 +429,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn4-5"
@@ -364,7 +439,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn4-6"
@@ -372,7 +449,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn4-7"
@@ -387,14 +466,18 @@
             android:layout_height="match_parent">
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn5-0"
                 android:layout_weight="1"
                 android:background="@android:drawable/checkbox_off_background" />
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn5-1"
@@ -402,7 +485,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn5-2"
@@ -410,7 +495,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn5-3"
@@ -418,7 +505,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn5-4"
@@ -426,7 +515,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn5-5"
@@ -434,7 +525,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn5-6"
@@ -442,7 +535,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn5-7"
@@ -460,14 +555,18 @@
             android:layout_height="match_parent">
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn6-0"
                 android:layout_weight="1"
                 android:background="@android:drawable/checkbox_off_background" />
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn6-1"
@@ -475,7 +574,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn6-2"
@@ -483,7 +584,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn6-3"
@@ -491,7 +594,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn6-4"
@@ -499,7 +604,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:id="@+id/btn6-5"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
@@ -507,7 +614,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn6-6"
@@ -515,7 +624,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn6-7"
@@ -530,14 +641,18 @@
             android:layout_height="match_parent">
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn7-0"
                 android:layout_weight="1"
                 android:background="@android:drawable/checkbox_off_background" />
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn7-1"
@@ -545,7 +660,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn7-2"
@@ -553,7 +670,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn7-3"
@@ -561,7 +680,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn7-4"
@@ -569,7 +690,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn7-5"
@@ -577,7 +700,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn7-6"
@@ -585,7 +710,9 @@
                 android:background="@android:drawable/checkbox_off_background" />
 
 
-            <ImageButton                 android:contentDescription="@string/buttonTextDescriptor"
+            <ImageButton
+                android:onClick="onClickGameButton"
+                android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/btn7-7"
@@ -646,7 +773,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="onReversi"
             android:text="@string/app_name" />
+        <Button
+            android:id="@+id/btnGameSkip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="skipMove"
+            android:text="@string/skip" />
 
 
     </LinearLayout>
