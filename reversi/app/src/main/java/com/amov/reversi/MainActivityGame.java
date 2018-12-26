@@ -3,6 +3,7 @@ package com.amov.reversi;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -179,10 +180,6 @@ public class MainActivityGame extends Activity {
             toast.show();
         } else {
 
-            if (isWhitesTurn)
-                this.moveCounterWhite++;
-            else
-                this.moveCounterBlack++;
 
             int x = 0, y = 0;
             for (int i = 0; i < 8; i++) {
@@ -199,6 +196,7 @@ public class MainActivityGame extends Activity {
             if (checker.check(x, y, isWhitesTurn)) {
                 //MUDA SELECAO
                 if (isWhitesTurn) {
+                    this.moveCounterWhite++;
                     checker.grid[x][y].changeWhite();
                     for (int i = 0; i < 8; i++) {
                         for (int j = 0; j < 8; j++) {
@@ -207,10 +205,12 @@ public class MainActivityGame extends Activity {
                         }
                     }
                 } else {
+                    this.moveCounterBlack++;
                     checker.grid[x][y].changeBlack();
                     for (int i = 0; i < 8; i++) {
                         for (int j = 0; j < 8; j++) {
                             if (checker.grid[i][j].getCellValue() == 2)//2 é o val de preto
+                                Log.i("MainActivityGame", " valor celula preta " + i + " " + j);
                             findViewById(checker.grid[i][j].getIdCelula()).setBackgroundResource(R.drawable.ic_black_circle);
                         }
                     }

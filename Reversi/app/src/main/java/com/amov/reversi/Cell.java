@@ -12,9 +12,6 @@ public class Cell {
 
 
 
-    //findViewById(R.id.btn4_4).setBackgroundResource(R.drawable.white_circle);
-
-
     public Cell(Activity _activity, int _idCelula){
         this.activity = _activity;
         this.idCelula = _idCelula;

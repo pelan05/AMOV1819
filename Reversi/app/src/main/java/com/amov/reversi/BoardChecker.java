@@ -21,11 +21,13 @@ public class BoardChecker {
         this.y = _y;
         this.isWhitesTurn = _isWhitesTurn;
 
+        int value = 0;
+        if(isWhitesTurn)
+            value = 1;
+        else
+            value = 2;
 
-        //checking process
-        result = checker(x, y, grid[x][y].getCellValue());
-
-        return result; //temp TODO
+        return checker(x, y, value);
     }
 
 
@@ -42,53 +44,51 @@ public class BoardChecker {
 
         sum = 0;
 
-
-
-        if (checkcell(_x+1, _y+1, valueInverted)){
-            //se for uma celula brenca
-            checkDiagCimDir(_x, _y, _cellValue);
+        if (checkcell(_x+1, _y-1, valueInverted)){
+            //se for uma celula branca
+            if(checkDiagCimDir(_x, _y, _cellValue))
             sum++;
         } //diagonal cima direita
 
         if (checkcell(_x+1, _y, valueInverted)){
-            //se for uma celula brenca
-            checkDir(_x, _cellValue);
+            //se for uma celula branca
+            if(checkDir(_x, _cellValue))
             sum++;
         } //direita
 
-        if (checkcell(_x+1, _y-1, valueInverted)){
-            //se for uma celula brenca
-            checkDiagBaiDir(_x, _y, _cellValue);
+        if (checkcell(_x+1, _y+1, valueInverted)){
+            //se for uma celula branca
+            if(checkDiagBaiDir(_x, _y, _cellValue))
             sum++;
         } //diagonal baixo direita
 
-        if (checkcell(_x, _y+1, valueInverted)){
+        if (checkcell(_x, _y-1, valueInverted)){
             //se for uma celula brenca
-            checkCim(_y, _cellValue);
+            if(checkCim(_y, _cellValue))
             sum++;
         }//cima
 
-        if (checkcell(_x, _y-1, valueInverted)){
+        if (checkcell(_x, _y+1, valueInverted)){
             //se for uma celula brenca
-            checkBaixo(_y, _cellValue);
+            if(checkBaixo(_y, _cellValue))
             sum++;
         }//baixo
 
-        if (checkcell(_x-1, _y+1, valueInverted)){
+        if (checkcell(_x-1, _y-1, valueInverted)){
             //se for uma celula brenca
-            checkDiagCimEsq(_x, _y, _cellValue);
+            if(checkDiagCimEsq(_x, _y, _cellValue))
             sum++;
         } //diagonal cima esquerda
 
         if (checkcell(_x-1, _y, valueInverted)){
             //se for uma celula brenca
-            checkEsq(_x, _cellValue);
+            if(checkEsq(_x, _cellValue))
             sum++;
         } //esquerda
 
-        if (checkcell(_x-1, _y-1, valueInverted)){
+        if (checkcell(_x-1, _y+1, valueInverted)){
             //se for uma celula brenca
-            checkDiagBaiEsq(_x, _y, _cellValue);
+            if(checkDiagBaiEsq(_x, _y, _cellValue))
             sum++;
         } //diagonal baixo esquerda
 
@@ -112,11 +112,11 @@ public class BoardChecker {
     //
     //LINE CHECKING METHODS
     //
-    public void checkDiagCimDir(int _x, int _y, int value){
+    public boolean checkDiagCimDir(int _x, int _y, int value){
         int counter = 0;
         for (int i = 0; i < 8 ; i++) {
             _x++;
-            _y++;
+            _y--;
             if(_x < 0 || _y < 0 || _x >= 8 || _y >= 8)
                 break;
 
@@ -138,13 +138,18 @@ public class BoardChecker {
         //replace said cells
         for (int i = 0; i < counter; i++) {
             _x++;
-            _y++;
+            _y--;
             grid[_x][_y].setCellValue(value);
         }
 
+        if(counter == 0)
+            return false;
+        else
+            return true;
+
     }
 
-    public void checkDir(int _x, int value){
+    public boolean checkDir(int _x, int value){
         int counter = 0;
         for (int i = 0; i < 8 ; i++) {
             _x++;
@@ -172,13 +177,18 @@ public class BoardChecker {
 
             grid[_x][y].setCellValue(value);
         }
+
+        if(counter == 0)
+            return false;
+        else
+            return true;
     }
 
-    public void checkDiagBaiDir(int _x, int _y, int value){
+    public boolean checkDiagBaiDir(int _x, int _y, int value){
         int counter = 0;
         for (int i = 0; i < 8 ; i++) {
             _x++;
-            _y--;
+            _y++;
             if(_x < 0 || _y < 0 || _x >= 8 || _y >= 8)
                 break;
 
@@ -200,44 +210,19 @@ public class BoardChecker {
         //replace said cells
         for (int i = 0; i < counter; i++) {
             _x++;
-            _y--;
+            _y++;
             grid[_x][_y].setCellValue(value);
         }
-    }
 
-    public void checkCim(int _y, int value){
-        int counter = 0;
-        for (int i = 0; i < 8 ; i++) {
-            _y++;
-            if(x < 0 || _y < 0 || x >= 8 || _y >= 8)
-                break;
-
-            if(grid[x][_y].getCellValue() == value) {
-                counter++;
-            }else{
-                break;
-            }
-        }
-        if(value == 2)
-            value = 1;
+        if(counter == 0)
+            return false;
         else
-            value = 2;
-
-
-        //return x y to original values
-        _y = y;
-
-        //replace said cells
-        for (int i = 0; i < counter; i++) {
-            _y++;
-            grid[x][_y].setCellValue(value);
-        }
+            return true;
     }
 
-    public void checkBaixo(int _y, int value){
+    public boolean checkCim(int _y, int value){
         int counter = 0;
         for (int i = 0; i < 8 ; i++) {
-
             _y--;
             if(x < 0 || _y < 0 || x >= 8 || _y >= 8)
                 break;
@@ -262,13 +247,53 @@ public class BoardChecker {
             _y--;
             grid[x][_y].setCellValue(value);
         }
+
+        if(counter == 0)
+            return false;
+        else
+            return true;
     }
 
-    public void checkDiagCimEsq(int _x, int _y, int value){
+    public boolean checkBaixo(int _y, int value){
+        int counter = 0;
+        for (int i = 0; i < 8 ; i++) {
+
+            _y++;
+            if(x < 0 || _y < 0 || x >= 8 || _y >= 8)
+                break;
+
+            if(grid[x][_y].getCellValue() == value) {
+                counter++;
+            }else{
+                break;
+            }
+        }
+        if(value == 2)
+            value = 1;
+        else
+            value = 2;
+
+
+        //return x y to original values
+        _y = y;
+
+        //replace said cells
+        for (int i = 0; i < counter; i++) {
+            _y++;
+            grid[x][_y].setCellValue(value);
+        }
+
+        if(counter == 0)
+            return false;
+        else
+            return true;
+    }
+
+    public boolean checkDiagCimEsq(int _x, int _y, int value){
         int counter = 0;
         for (int i = 0; i < 8 ; i++) {
             _x--;
-            _y++;
+            _y--;
             if(_x < 0 || _y < 0 || _x >= 8 || _y >= 8)
                 break;
 
@@ -290,12 +315,17 @@ public class BoardChecker {
         //replace said cells
         for (int i = 0; i < counter; i++) {
             _x--;
-            _y++;
+            _y--;
             grid[_x][_y].setCellValue(value);
         }
+
+        if(counter == 0)
+            return false;
+        else
+            return true;
     }
 
-    public void checkEsq(int _x, int value){
+    public boolean checkEsq(int _x, int value){
         int counter = 0;
         for (int i = 0; i < 8 ; i++) {
             _x--;
@@ -322,13 +352,18 @@ public class BoardChecker {
             _x--;
             grid[_x][y].setCellValue(value);
         }
+
+        if(counter == 0)
+            return false;
+        else
+            return true;
     }
 
-    public void checkDiagBaiEsq(int _x, int _y, int value){
+    public boolean checkDiagBaiEsq(int _x, int _y, int value){
         int counter = 0;
         for (int i = 0; i < 8 ; i++) {
             _x--;
-            _y--;
+            _y++;
             if(_x < 0 || _y < 0 || _x >= 8 || _y >= 8)
                 break;
 
@@ -350,9 +385,14 @@ public class BoardChecker {
         //replace said cells
         for (int i = 0; i < counter; i++) {
             _x--;
-            _y--;
+            _y++;
             grid[_x][_y].setCellValue(value);
         }
+
+        if(counter == 0)
+            return false;
+        else
+            return true;
     }
 
 
