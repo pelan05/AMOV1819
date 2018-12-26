@@ -324,6 +324,7 @@
 
 
             <ImageButton
+                android:onClick="onClickGameButton"
                 android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
@@ -333,6 +334,7 @@
 
 
             <ImageButton
+                android:onClick="onClickGameButton"
                 android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
@@ -408,6 +410,7 @@
 
 
             <ImageButton
+                android:onClick="onClickGameButton"
                 android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
@@ -417,6 +420,7 @@
 
 
             <ImageButton
+                android:onClick="onClickGameButton"
                 android:contentDescription="@string/buttonTextDescriptor"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"

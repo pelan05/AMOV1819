@@ -26,6 +26,8 @@ public class Cell {
 
     public int getCellValue() { return this.cellValue; }
 
+    public void setCellValue(int val){this.cellValue = val;}
+
     public void changeBlack(){
         this.cellValue = 2;
     }

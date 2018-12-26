@@ -46,7 +46,7 @@ public class MainActivityGame extends Activity {
             R.id.btn7_0, R.id.btn7_1, R.id.btn7_2, R.id.btn7_3, R.id.btn7_4, R.id.btn7_5, R.id.btn7_6, R.id.btn7_7
     };
 
-    public Cell[][] grid = new Cell[8][8];
+    //public Cell[][] grid = new Cell[8][8];
 
     BoardChecker checker;
     TextView textWhite;
@@ -123,20 +123,20 @@ public class MainActivityGame extends Activity {
         int k = 0;                          //inicialização de array de celulas
         for (int i = 0; i < 8 ; i++) {
             for (int j = 0; j < 8 ; j++) {
-                grid[i][j] = new Cell(this, btnList[k]);
+                checker.cellInitializer(i, j, this, btnList[k]);
                 k++;
             }
         }
 
 
 
-        grid[3][3].changeWhite();
+        checker.grid[3][3].changeWhite();
         findViewById(R.id.btn3_3).setBackgroundResource(R.drawable.ic_white_circle);
-        grid[3][4].changeBlack();
+        checker.grid[3][4].changeBlack();
         findViewById(R.id.btn3_4).setBackgroundResource(R.drawable.ic_black_circle);
-        grid[4][3].changeBlack();
+        checker.grid[4][3].changeBlack();
         findViewById(R.id.btn4_3).setBackgroundResource(R.drawable.ic_black_circle);
-        grid[4][4].changeWhite();
+        checker.grid[4][4].changeWhite();
         findViewById(R.id.btn4_4).setBackgroundResource(R.drawable.ic_white_circle);
 
 
@@ -187,7 +187,7 @@ public class MainActivityGame extends Activity {
             int x = 0, y = 0;
             for (int i = 0; i < 8; i++) {
                 for (int j = 0; j < 8; j++) {
-                    if (v.getId() == grid[i][j].getIdCelula()) {
+                    if (v.getId() == checker.grid[i][j].getIdCelula()) {
                         x = i;
                         y = j;
                     }
@@ -196,19 +196,19 @@ public class MainActivityGame extends Activity {
 
 
             //verificaCoords se é jogada valida
-            if (checker.check(grid, x, y)) {
+            if (checker.check(checker.grid, x, y, isWhitesTurn)) {
                 //MUDA SELECAO
                 if (isWhitesTurn) {
-                    grid[x][y].changeWhite();
-                    findViewById(grid[x][y].getIdCelula()).setBackgroundResource(R.drawable.ic_white_circle);
+                    checker.grid[x][y].changeWhite();
+                    findViewById(checker.grid[x][y].getIdCelula()).setBackgroundResource(R.drawable.ic_white_circle);
                 } else {
-                    grid[x][y].changeBlack();
-                    findViewById(grid[x][y].getIdCelula()).setBackgroundResource(R.drawable.ic_black_circle);
+                    checker.grid[x][y].changeBlack();
+                    findViewById(checker.grid[x][y].getIdCelula()).setBackgroundResource(R.drawable.ic_black_circle);
                 }
 
 
                 //calcula trocas de cor
-                
+
 
                 //atualiza counters
                 int counterWhite = 0, counterBlack = 0;
