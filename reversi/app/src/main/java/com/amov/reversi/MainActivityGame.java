@@ -196,18 +196,31 @@ public class MainActivityGame extends Activity {
 
 
             //verificaCoords se é jogada valida
-            if (checker.check(checker.grid, x, y, isWhitesTurn)) {
+            if (checker.check(x, y, isWhitesTurn)) {
                 //MUDA SELECAO
                 if (isWhitesTurn) {
                     checker.grid[x][y].changeWhite();
-                    findViewById(checker.grid[x][y].getIdCelula()).setBackgroundResource(R.drawable.ic_white_circle);
+                    for (int i = 0; i < 8; i++) {
+                        for (int j = 0; j < 8; j++) {
+                            if (checker.grid[i][j].getCellValue() == 1)//1 é o val de branco
+                            findViewById(checker.grid[i][j].getIdCelula()).setBackgroundResource(R.drawable.ic_white_circle);
+                        }
+                    }
                 } else {
                     checker.grid[x][y].changeBlack();
-                    findViewById(checker.grid[x][y].getIdCelula()).setBackgroundResource(R.drawable.ic_black_circle);
+                    for (int i = 0; i < 8; i++) {
+                        for (int j = 0; j < 8; j++) {
+                            if (checker.grid[i][j].getCellValue() == 2)//2 é o val de preto
+                            findViewById(checker.grid[i][j].getIdCelula()).setBackgroundResource(R.drawable.ic_black_circle);
+                        }
+                    }
                 }
 
 
                 //calcula trocas de cor
+
+                //replace cells
+
 
 
                 //atualiza counters

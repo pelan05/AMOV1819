@@ -16,93 +16,86 @@ public class BoardChecker {
         grid[_i][_j] = new Cell(_this, btnID);
     }
 
-    public boolean check(Cell[][] _grid, int _x, int _y, boolean _isWhitesTurn){
-        this.grid = _grid;
+    public boolean check(int _x, int _y, boolean _isWhitesTurn){
         this.x = _x;
         this.y = _y;
         this.isWhitesTurn = _isWhitesTurn;
 
 
         //checking process
-        //if has 1 neighbour cell with other color in it
-        if(isWhitesTurn){
-            result = checkBlack();
-        }else{
-            result = checkWhite();
-        }
+        result = checker(x, y, grid[x][y].getCellValue());
 
         return result; //temp TODO
     }
-    public boolean checkBlack(){
-
-        checker(x, y, grid[x][y].getCellValue());
-
-        if(sum > 0)
-            return true; //temp TODO
-        else
-            return false;
-    }
 
 
-    public boolean checkWhite(){
-
-
-        if(sum > 0)
-            return true; //temp TODO
-        else
-            return false;
-    }
-
-    public void checker(int _x, int _y, int _cellValue){
+    public boolean checker(int _x, int _y, int _cellValue){
 
         //verificar as abaixo, se encontrar preto ou vazio para. as que tem branco manda para os checkers
-        int value = 0;
+
+        int valueInverted = 0;
+
         if(_cellValue == 2)
-            value = 1;
+            valueInverted = 1;
         else
-            value = 2;
+            valueInverted = 2;
+
+        sum = 0;
 
 
 
-        if (checkcell(_x+1, _y+1, value)){
+        if (checkcell(_x+1, _y+1, valueInverted)){
             //se for uma celula brenca
-            checkDiagCimDir(_x, _y, value);
+            checkDiagCimDir(_x, _y, _cellValue);
+            sum++;
         } //diagonal cima direita
 
-        if (checkcell(_x+1, _y, value)){
+        if (checkcell(_x+1, _y, valueInverted)){
             //se for uma celula brenca
-            checkDir(_x, value);
+            checkDir(_x, _cellValue);
+            sum++;
         } //direita
 
-        if (checkcell(_x+1, _y-1, value)){
+        if (checkcell(_x+1, _y-1, valueInverted)){
             //se for uma celula brenca
-            checkDiagBaiDir(_x, _y, value);
+            checkDiagBaiDir(_x, _y, _cellValue);
+            sum++;
         } //diagonal baixo direita
 
-        if (checkcell(_x, _y+1, value)){
+        if (checkcell(_x, _y+1, valueInverted)){
             //se for uma celula brenca
-            checkCim(_y, value);
+            checkCim(_y, _cellValue);
+            sum++;
         }//cima
 
-        if (checkcell(_x, _y-1, value)){
+        if (checkcell(_x, _y-1, valueInverted)){
             //se for uma celula brenca
-            checkBaixo(_y, value);
+            checkBaixo(_y, _cellValue);
+            sum++;
         }//baixo
 
-        if (checkcell(_x-1, _y+1, value)){
+        if (checkcell(_x-1, _y+1, valueInverted)){
             //se for uma celula brenca
-            checkDiagCimEsq(_x, _y, value);
+            checkDiagCimEsq(_x, _y, _cellValue);
+            sum++;
         } //diagonal cima esquerda
 
-        if (checkcell(_x-1, _y, value)){
+        if (checkcell(_x-1, _y, valueInverted)){
             //se for uma celula brenca
-            checkEsq(_x, value);
+            checkEsq(_x, _cellValue);
+            sum++;
         } //esquerda
 
-        if (checkcell(_x-1, _y-1, value)){
+        if (checkcell(_x-1, _y-1, valueInverted)){
             //se for uma celula brenca
-            checkDiagBaiEsq(_x, _y, value);
+            checkDiagBaiEsq(_x, _y, _cellValue);
+            sum++;
         } //diagonal baixo esquerda
+
+    if(sum > 0)
+        return true;
+    else
+        return false;
 
 
     }
