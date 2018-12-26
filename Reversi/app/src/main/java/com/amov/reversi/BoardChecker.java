@@ -152,7 +152,33 @@ public class BoardChecker {
     }
 
     public void checkDir(int _x, int value){
+        int counter = 0;
+        for (int i = 0; i < 8 ; i++) {
+            _x++;
+            if(_x < 0 || y < 0 || _x >= 8 || y >= 8)
+                break;
 
+            if(grid[_x][y].getCellValue() == value) {
+                counter++;
+            }else{
+                break;
+            }
+        }
+        if(value == 2)
+            value = 1;
+        else
+            value = 2;
+
+
+        //return x y to original values
+        _x = x;
+
+        //replace said cells
+        for (int i = 0; i < counter; i++) {
+            _x++;
+
+            grid[_x][y].setCellValue(value);
+        }
     }
 
     public void checkDiagBaiDir(int _x, int _y, int value){
@@ -187,11 +213,62 @@ public class BoardChecker {
     }
 
     public void checkCim(int _y, int value){
+        int counter = 0;
+        for (int i = 0; i < 8 ; i++) {
+            _y++;
+            if(x < 0 || _y < 0 || x >= 8 || _y >= 8)
+                break;
 
+            if(grid[x][_y].getCellValue() == value) {
+                counter++;
+            }else{
+                break;
+            }
+        }
+        if(value == 2)
+            value = 1;
+        else
+            value = 2;
+
+
+        //return x y to original values
+        _y = y;
+
+        //replace said cells
+        for (int i = 0; i < counter; i++) {
+            _y++;
+            grid[x][_y].setCellValue(value);
+        }
     }
 
     public void checkBaixo(int _y, int value){
+        int counter = 0;
+        for (int i = 0; i < 8 ; i++) {
 
+            _y--;
+            if(x < 0 || _y < 0 || x >= 8 || _y >= 8)
+                break;
+
+            if(grid[x][_y].getCellValue() == value) {
+                counter++;
+            }else{
+                break;
+            }
+        }
+        if(value == 2)
+            value = 1;
+        else
+            value = 2;
+
+
+        //return x y to original values
+        _y = y;
+
+        //replace said cells
+        for (int i = 0; i < counter; i++) {
+            _y--;
+            grid[x][_y].setCellValue(value);
+        }
     }
 
     public void checkDiagCimEsq(int _x, int _y, int value){
@@ -226,7 +303,32 @@ public class BoardChecker {
     }
 
     public void checkEsq(int _x, int value){
+        int counter = 0;
+        for (int i = 0; i < 8 ; i++) {
+            _x--;
+            if(_x < 0 || y < 0 || _x >= 8 || y >= 8)
+                break;
 
+            if(grid[_x][y].getCellValue() == value) {
+                counter++;
+            }else{
+                break;
+            }
+        }
+        if(value == 2)
+            value = 1;
+        else
+            value = 2;
+
+
+        //return x y to original values
+        _x = x;
+
+        //replace said cells
+        for (int i = 0; i < counter; i++) {
+            _x--;
+            grid[_x][y].setCellValue(value);
+        }
     }
 
     public void checkDiagBaiEsq(int _x, int _y, int value){
