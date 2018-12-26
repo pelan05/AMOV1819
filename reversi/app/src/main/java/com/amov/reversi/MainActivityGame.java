@@ -200,8 +200,9 @@ public class MainActivityGame extends Activity {
                     checker.grid[x][y].changeWhite();
                     for (int i = 0; i < 8; i++) {
                         for (int j = 0; j < 8; j++) {
-                            if (checker.grid[i][j].getCellValue() == 1)//1 é o val de branco
-                            findViewById(checker.grid[i][j].getIdCelula()).setBackgroundResource(R.drawable.ic_white_circle);
+                            if (checker.grid[i][j].getCellValue() == 1) {//1 é o val de branco
+                                findViewById(checker.grid[i][j].getIdCelula()).setBackgroundResource(R.drawable.ic_white_circle);
+                            }
                         }
                     }
                 } else {
@@ -209,9 +210,9 @@ public class MainActivityGame extends Activity {
                     checker.grid[x][y].changeBlack();
                     for (int i = 0; i < 8; i++) {
                         for (int j = 0; j < 8; j++) {
-                            if (checker.grid[i][j].getCellValue() == 2)//2 é o val de preto
-                                Log.i("MainActivityGame", " valor celula preta " + i + " " + j);
+                            if (checker.grid[i][j].getCellValue() == 2){//2 é o val de preto
                             findViewById(checker.grid[i][j].getIdCelula()).setBackgroundResource(R.drawable.ic_black_circle);
+                            }
                         }
                     }
                 }
