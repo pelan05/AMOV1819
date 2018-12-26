@@ -31,7 +31,7 @@ public class BoardChecker {
     }
 
 
-    public boolean checker(int _x, int _y, int _cellValue){
+    public boolean checker(int _x, int _y, int _cellValue/*cor da celula*/){
 
         //verificar as abaixo, se encontrar preto ou vazio para. as que tem branco manda para os checkers
 
@@ -46,49 +46,49 @@ public class BoardChecker {
 
         if (checkcell(_x+1, _y-1, valueInverted)){
             //se for uma celula branca
-            if(checkDiagCimDir(_x, _y, _cellValue))
+            if(checkDiagCimDir(_x, _y, valueInverted))
             sum++;
         } //diagonal cima direita
 
         if (checkcell(_x+1, _y, valueInverted)){
             //se for uma celula branca
-            if(checkDir(_x, _cellValue))
+            if(checkDir(_x, valueInverted))
             sum++;
         } //direita
 
         if (checkcell(_x+1, _y+1, valueInverted)){
             //se for uma celula branca
-            if(checkDiagBaiDir(_x, _y, _cellValue))
+            if(checkDiagBaiDir(_x, _y, valueInverted))
             sum++;
         } //diagonal baixo direita
 
         if (checkcell(_x, _y-1, valueInverted)){
             //se for uma celula brenca
-            if(checkCim(_y, _cellValue))
+            if(checkCim(_y, valueInverted))
             sum++;
         }//cima
 
         if (checkcell(_x, _y+1, valueInverted)){
             //se for uma celula brenca
-            if(checkBaixo(_y, _cellValue))
+            if(checkBaixo(_y, valueInverted))
             sum++;
         }//baixo
 
         if (checkcell(_x-1, _y-1, valueInverted)){
             //se for uma celula brenca
-            if(checkDiagCimEsq(_x, _y, _cellValue))
+            if(checkDiagCimEsq(_x, _y, valueInverted))
             sum++;
         } //diagonal cima esquerda
 
         if (checkcell(_x-1, _y, valueInverted)){
             //se for uma celula brenca
-            if(checkEsq(_x, _cellValue))
+            if(checkEsq(_x, valueInverted))
             sum++;
         } //esquerda
 
         if (checkcell(_x-1, _y+1, valueInverted)){
             //se for uma celula brenca
-            if(checkDiagBaiEsq(_x, _y, _cellValue))
+            if(checkDiagBaiEsq(_x, _y, valueInverted))
             sum++;
         } //diagonal baixo esquerda
 
