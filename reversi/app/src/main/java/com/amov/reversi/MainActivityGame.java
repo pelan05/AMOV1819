@@ -167,129 +167,130 @@ public class MainActivityGame extends Activity {
 
 
 
-    public void onClickGameButton(View v){
-
-        if(isWhitesTurn)
-            this.moveCounterWhite++;
-        else
-            this.moveCounterBlack++;
-
-        int x = 0, y = 0;
-
-        for (int i = 0; i < 8 ; i++) {
-            for (int j = 0; j < 8 ; j++) {
-                if(v.getId() == grid[i][j].getIdCelula()){
-                    x = i;
-                    y = j;
-                }
-            }
-        }
+    public void onClickGameButton(View v) {
 
 
-        //verificaCoords se é jogada valida
-        if(checker.check(grid, x, y)){
-            //MUDA SELECAO
-            if(isWhitesTurn){
-                grid[x][y].changeWhite();
-                findViewById(grid[x][y].getIdCelula()).setBackgroundResource(R.drawable.ic_white_circle);
-            }else{
-                grid[x][y].changeBlack();
-                findViewById(grid[x][y].getIdCelula()).setBackgroundResource(R.drawable.ic_black_circle);
-            }
-
-
-            //calcula trocas de cor
-
-
-
-            //atualiza counters
-            int counterWhite = 0, counterBlack = 0;
-            for (int i = 0; i < 64 ; i++) {
-                if(findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_white_circle).getConstantState())){
-                    counterWhite++;
-                }else if(findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_black_circle).getConstantState())){
-                    counterBlack++;
-                }
-            }
-
-            textWhite.setText(String.format(Locale.US,": %d", counterWhite));
-            textBlack.setText(String.format(Locale.US, ": %d", counterBlack));
-
-
-
-
-            //proxima jogada( , )
-            triggerTurn();
-            if(isWhitesTurn)
-                infoBox.setText(getResources().getString(R.string.whiteTurn));
-            else
-                infoBox.setText(getResources().getString(R.string.blackTurn));
-
-
-            //fim do jogo
-            if(counterBlack + counterWhite == 64)
-                if(counterWhite > counterBlack)
-                    infoBox.setText(getResources().getString(R.string.whiteWon));
-                else
-                    infoBox.setText(getResources().getString(R.string.blackWon));
-
-
-
-
-        }else{
+        if (v.getBackground().getConstantState().equals(getDrawable(R.drawable.ic_white_circle).getConstantState())
+                || v.getBackground().getConstantState().equals(getDrawable(R.drawable.ic_black_circle).getConstantState())) {
+            //invalid move - cell already taken
             Context context = getApplicationContext();
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, getResources().getString(R.string.invalid), duration);
             toast.show();
+        } else {
+
+            if (isWhitesTurn)
+                this.moveCounterWhite++;
+            else
+                this.moveCounterBlack++;
+
+            int x = 0, y = 0;
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 8; j++) {
+                    if (v.getId() == grid[i][j].getIdCelula()) {
+                        x = i;
+                        y = j;
+                    }
+                }
+            }
+
+
+            //verificaCoords se é jogada valida
+            if (checker.check(grid, x, y)) {
+                //MUDA SELECAO
+                if (isWhitesTurn) {
+                    grid[x][y].changeWhite();
+                    findViewById(grid[x][y].getIdCelula()).setBackgroundResource(R.drawable.ic_white_circle);
+                } else {
+                    grid[x][y].changeBlack();
+                    findViewById(grid[x][y].getIdCelula()).setBackgroundResource(R.drawable.ic_black_circle);
+                }
+
+
+                //calcula trocas de cor
+                
+
+                //atualiza counters
+                int counterWhite = 0, counterBlack = 0;
+                for (int i = 0; i < 64; i++) {
+                    if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_white_circle).getConstantState())) {
+                        counterWhite++;
+                    } else if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_black_circle).getConstantState())) {
+                        counterBlack++;
+                    }
+                }
+
+                textWhite.setText(String.format(Locale.US, ": %d", counterWhite));
+                textBlack.setText(String.format(Locale.US, ": %d", counterBlack));
+
+
+                //proxima jogada( , )
+                triggerTurn();
+                if (isWhitesTurn)
+                    infoBox.setText(getResources().getString(R.string.whiteTurn));
+                else
+                    infoBox.setText(getResources().getString(R.string.blackTurn));
+
+
+                //fim do jogo
+                if (counterBlack + counterWhite == 64)
+                    if (counterWhite > counterBlack)
+                        infoBox.setText(getResources().getString(R.string.whiteWon));
+                    else
+                        infoBox.setText(getResources().getString(R.string.blackWon));
+
+
+            } else {
+                Context context = getApplicationContext();
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, getResources().getString(R.string.invalid), duration);
+                toast.show();
+            }
+        }
+
         }
 
 
+        public void skipMove (View v){
+            //TODO criar logica
+            if (isWhitesTurn)
+                moveCounterWhite--;
+            else
+                moveCounterBlack--;
 
-    }
-
-
-
-    public void skipMove(View v){
-        //TODO criar logica
-        if(isWhitesTurn)
-            moveCounterWhite--;
-        else
-            moveCounterBlack--;
-
-        triggerTurn();
+            triggerTurn();
 
 
-        Context context = getApplicationContext();
-        CharSequence text = "Skip move selected";
-        int duration = Toast.LENGTH_SHORT;
+            Context context = getApplicationContext();
+            CharSequence text = "Skip move selected";
+            int duration = Toast.LENGTH_SHORT;
 
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-    }
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
 
 
+        public void onReversi (View v){
+            //TODO criar logica
+            Context context = getApplicationContext();
+            CharSequence text = "REVERSI selected";
+            int duration = Toast.LENGTH_SHORT;
 
-    public void onReversi(View v){
-        //TODO criar logica
-        Context context = getApplicationContext();
-        CharSequence text = "REVERSI selected";
-        int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
 
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-    }
+        public void onExit (View v){
 
-    public void onExit(View v){
+            finish();
+        }
 
-        finish();
-    }
-
-    public void triggerTurn(){
-        if(isWhitesTurn)
-            isWhitesTurn = false;
-        else
-            isWhitesTurn = true;
-    }
+        public void triggerTurn () {
+            if (isWhitesTurn)
+                isWhitesTurn = false;
+            else
+                isWhitesTurn = true;
+        }
 
 
 
