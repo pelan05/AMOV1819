@@ -113,6 +113,12 @@ public class BoardChecker {
     //LINE CHECKING METHODS
     //
     public boolean checkDiagCimDir(int _x, int _y, int value){
+        int invertedValue;
+        if(value == 1)
+            invertedValue = 2;
+        else
+            invertedValue = 1;
+
         int counter = 0;
         for (int i = 0; i < 8 ; i++) {
             _x++;
@@ -123,7 +129,12 @@ public class BoardChecker {
             if(grid[_x][_y].getCellValue() == value) {
                 counter++;
             }else{
+                if(grid[_x][_y].getCellValue() == invertedValue)
                 break;
+                else{
+                    counter = 0;
+                    break;
+                }
             }
         }
         if(value == 2)
@@ -149,43 +160,59 @@ public class BoardChecker {
 
     }
 
-    public boolean checkDir(int _x, int value){
+    public boolean checkDir(int _x, int value) {
+        int invertedValue;
+        if (value == 1)
+            invertedValue = 2;
+        else
+            invertedValue = 1;
         int counter = 0;
-        for (int i = 0; i < 8 ; i++) {
+        for (int i = 0; i < 8; i++) {
             _x++;
-            if(_x < 0 || y < 0 || _x >= 8 || y >= 8)
+            if (_x < 0 || y < 0 || _x >= 8 || y >= 8)
                 break;
 
-            if(grid[_x][y].getCellValue() == value) {
+            if (grid[_x][y].getCellValue() == value) {
                 counter++;
-            }else{
-                break;
+            } else {
+                if (grid[_x][y].getCellValue() == invertedValue)
+                    break;
+                else {
+                    counter = 0;
+                    break;
+                }
             }
         }
-        if(value == 2)
-            value = 1;
-        else
-            value = 2;
+            if (value == 2)
+                value = 1;
+            else
+                value = 2;
 
 
-        //return x y to original values
-        _x = x;
+            //return x y to original values
+            _x = x;
 
-        //replace said cells
-        for (int i = 0; i < counter; i++) {
-            _x++;
+            //replace said cells
+            for (int i = 0; i < counter; i++) {
+                _x++;
 
-            grid[_x][y].setCellValue(value);
+                grid[_x][y].setCellValue(value);
+            }
+
+            if (counter == 0)
+                return false;
+            else
+                return true;
         }
 
-        if(counter == 0)
-            return false;
-        else
-            return true;
-    }
 
     public boolean checkDiagBaiDir(int _x, int _y, int value){
-        int counter = 0;
+            int invertedValue;
+            if(value == 1)
+                invertedValue = 2;
+            else
+                invertedValue = 1;
+            int counter = 0;
         for (int i = 0; i < 8 ; i++) {
             _x++;
             _y++;
@@ -194,8 +221,13 @@ public class BoardChecker {
 
             if(grid[_x][_y].getCellValue() == value) {
                 counter++;
-            }else{
-                break;
+            }else {
+                if (grid[_x][_y].getCellValue() == invertedValue)
+                    break;
+                else {
+                    counter = 0;
+                    break;
+                }
             }
         }
         if(value == 2)
@@ -221,6 +253,11 @@ public class BoardChecker {
     }
 
     public boolean checkCim(int _y, int value){
+        int invertedValue;
+        if(value == 1)
+            invertedValue = 2;
+        else
+            invertedValue = 1;
         int counter = 0;
         for (int i = 0; i < 8 ; i++) {
             _y--;
@@ -229,8 +266,13 @@ public class BoardChecker {
 
             if(grid[x][_y].getCellValue() == value) {
                 counter++;
-            }else{
-                break;
+            }else {
+                if (grid[x][_y].getCellValue() == invertedValue)
+                    break;
+                else {
+                    counter = 0;
+                    break;
+                }
             }
         }
         if(value == 2)
@@ -255,6 +297,11 @@ public class BoardChecker {
     }
 
     public boolean checkBaixo(int _y, int value){
+        int invertedValue;
+        if(value == 1)
+            invertedValue = 2;
+        else
+            invertedValue = 1;
         int counter = 0;
         for (int i = 0; i < 8 ; i++) {
 
@@ -264,8 +311,13 @@ public class BoardChecker {
 
             if(grid[x][_y].getCellValue() == value) {
                 counter++;
-            }else{
-                break;
+            }else {
+                if (grid[x][_y].getCellValue() == invertedValue)
+                    break;
+                else {
+                    counter = 0;
+                    break;
+                }
             }
         }
         if(value == 2)
@@ -290,6 +342,11 @@ public class BoardChecker {
     }
 
     public boolean checkDiagCimEsq(int _x, int _y, int value){
+        int invertedValue;
+        if(value == 1)
+            invertedValue = 2;
+        else
+            invertedValue = 1;
         int counter = 0;
         for (int i = 0; i < 8 ; i++) {
             _x--;
@@ -299,8 +356,13 @@ public class BoardChecker {
 
             if(grid[_x][_y].getCellValue() == value) {
                 counter++;
-            }else{
-                break;
+            }else {
+                if (grid[_x][_y].getCellValue() == invertedValue)
+                    break;
+                else {
+                    counter = 0;
+                    break;
+                }
             }
         }
         if(value == 2)
@@ -326,6 +388,11 @@ public class BoardChecker {
     }
 
     public boolean checkEsq(int _x, int value){
+        int invertedValue;
+        if(value == 1)
+            invertedValue = 2;
+        else
+            invertedValue = 1;
         int counter = 0;
         for (int i = 0; i < 8 ; i++) {
             _x--;
@@ -334,8 +401,13 @@ public class BoardChecker {
 
             if(grid[_x][y].getCellValue() == value) {
                 counter++;
-            }else{
-                break;
+            }else {
+                if (grid[_x][y].getCellValue() == invertedValue)
+                    break;
+                else {
+                    counter = 0;
+                    break;
+                }
             }
         }
         if(value == 2)
@@ -360,6 +432,11 @@ public class BoardChecker {
     }
 
     public boolean checkDiagBaiEsq(int _x, int _y, int value){
+        int invertedValue;
+        if(value == 1)
+            invertedValue = 2;
+        else
+            invertedValue = 1;
         int counter = 0;
         for (int i = 0; i < 8 ; i++) {
             _x--;
@@ -369,8 +446,13 @@ public class BoardChecker {
 
             if(grid[_x][_y].getCellValue() == value) {
                 counter++;
-            }else{
-                break;
+            }else {
+                if (grid[_x][_y].getCellValue() == invertedValue)
+                    break;
+                else {
+                    counter = 0;
+                    break;
+                }
             }
         }
         if(value == 2)
