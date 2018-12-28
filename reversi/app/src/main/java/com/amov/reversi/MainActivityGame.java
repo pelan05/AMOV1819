@@ -303,6 +303,9 @@ public class MainActivityGame extends Activity {
             switch (mode) {
                 case 0://SinglePlayer - falta AI
 
+
+                    if(!isWhitesTurn){
+
                     x = 0;
                     y = 0;
                     for (i = 0; i < 8; i++) {
@@ -330,28 +333,27 @@ public class MainActivityGame extends Activity {
                         }
 
 
+                        //calcula trocas de cor
 
-                    //calcula trocas de cor
-
-                    //replace cells
+                        //replace cells
 
 
-                    //atualiza counters
-                    counterWhite = 0;
-                    counterBlack = 0;
-                    for (i = 0; i < 64; i++) {
-                        if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_white_circle).getConstantState())) {
-                            counterWhite++;
-                        } else if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_black_circle).getConstantState())) {
-                            counterBlack++;
+                        //atualiza counters
+                        counterWhite = 0;
+                        counterBlack = 0;
+                        for (i = 0; i < 64; i++) {
+                            if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_white_circle).getConstantState())) {
+                                counterWhite++;
+                            } else if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_black_circle).getConstantState())) {
+                                counterBlack++;
+                            }
                         }
+
+                        textWhite.setText(String.format(Locale.US, ": %d", counterWhite));
+                        textBlack.setText(String.format(Locale.US, ": %d", counterBlack));
+
+
                     }
-
-                    textWhite.setText(String.format(Locale.US, ": %d", counterWhite));
-                    textBlack.setText(String.format(Locale.US, ": %d", counterBlack));
-
-
-
 
                     if (usingPlay2x) {
                         usingPlay2x = false;
