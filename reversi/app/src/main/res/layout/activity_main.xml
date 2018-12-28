@@ -11,6 +11,9 @@
 
 
     <TextView
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="16dp"
         android:id="@+id/txtTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,6 +29,9 @@
 
 
     <Button
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="16dp"
         android:id="@+id/btnMulti"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,6 +42,9 @@
         android:visibility="visible"/>
 
     <Button
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="16dp"
         android:id="@+id/btnLocal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,6 +54,9 @@
         android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
 
     <Button
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="16dp"
         android:id="@+id/btnClient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,11 +66,25 @@
         android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
 
     <Button
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="16dp"
         android:id="@+id/btnServer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onServer"
         android:text="Multiplayer (Server)"
+        android:textStyle="bold"
+        android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
+    <Button
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="40dp"
+        android:id="@+id/btnCredits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onCredits"
+        android:text="Credits"
         android:textStyle="bold"
         android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
 

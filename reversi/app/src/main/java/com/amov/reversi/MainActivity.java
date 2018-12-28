@@ -75,6 +75,19 @@ public class MainActivity extends Activity {
         intentClient.putExtra("mode", MainActivityGame.CLIENT);
         startActivity(intentClient);
     }
+    public void onCredits (View v)
+    {
+        Context context = getApplicationContext();
+        CharSequence text = "Credits Selected";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
+
+        Intent intentClient=new Intent(this, CreditsActivity.class);
+        startActivity(intentClient);
+    }
 
 
 

@@ -11,4 +11,5 @@
     <string name="whiteWon">Congratulations, white won</string>
     <string name="blackTurn">Black\'s move</string>
     <string name="whiteTurn">White\'s move</string>
+    <string name="credits">Game made by: \nPedro Lanhoso \nVasco Almeida</string>
 </resources>
