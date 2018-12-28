@@ -1,19 +1,37 @@
 package com.amov.reversi;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.SocketException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Locale;
 
 public class MainActivityGame extends Activity {
@@ -39,6 +57,14 @@ public class MainActivityGame extends Activity {
     public boolean hasUsedSkipBlack = false;
     public boolean isWhitesTurn = false;
     public boolean usingPlay2x = false;
+
+
+    ProgressDialog pd = null;
+    ServerSocket serverSocket=null;
+    Socket socketGame = null;
+    BufferedReader input;
+    PrintWriter output;
+    Handler procMsg = null;
 
     public int[] btnList = {//array de ids de botao
             R.id.btn0_0, R.id.btn0_1, R.id.btn0_2, R.id.btn0_3, R.id.btn0_4, R.id.btn0_5, R.id.btn0_6, R.id.btn0_7,
@@ -66,6 +92,14 @@ public class MainActivityGame extends Activity {
         setContentView(R.layout.activity_game);
 
 
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo == null || !networkInfo.isConnected()) {
+            Toast.makeText(this, R.string.error_netconn, Toast.LENGTH_LONG).show();
+            finish();
+        }
+
+
         Intent intent = getIntent();
         if (intent != null)
             mode = intent.getIntExtra("mode", SERVER);
@@ -79,62 +113,37 @@ public class MainActivityGame extends Activity {
 
                 if (isWhitesTurn) {
                     if (hasUsedPlay2xWhite) {
-                        Context context = getApplicationContext();
                         CharSequence text = "Already Used";
-                        int duration = Toast.LENGTH_SHORT;
-
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
+                        Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
                     } else if (moveCounterBlack < 5 || moveCounterWhite < 5) {
-                        Context context = getApplicationContext();
                         CharSequence text = "Available after 5th move";
-                        int duration = Toast.LENGTH_SHORT;
-
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
+                        Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
                     } else if (moveCounterBlack >= 5 || moveCounterWhite >= 5 && !hasUsedPlay2xWhite) {
                         //Play 2x procedure
 
                         usingPlay2x = true;
 
 
-                        Context context = getApplicationContext();
                         CharSequence text = "Play 2x selected";
-                        int duration = Toast.LENGTH_SHORT;
-
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
+                        Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
 
                         btnGameBack.setBackgroundColor(getResources().getColor(R.color.red));
                         hasUsedPlay2xWhite = true;
                     }
                 } else {
                     if (hasUsedPlay2xBlack) {
-                        Context context = getApplicationContext();
                         CharSequence text = "Already Used";
-                        int duration = Toast.LENGTH_SHORT;
-
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
+                        Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
                     } else if (moveCounterBlack < 5 || moveCounterWhite < 5) {
-                        Context context = getApplicationContext();
                         CharSequence text = "Available after 5th move";
-                        int duration = Toast.LENGTH_SHORT;
-
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
+                        Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
                     } else if (moveCounterBlack >= 5 || moveCounterWhite >= 5 && !hasUsedPlay2xBlack) {
                         //Play 2x procedure
 
                         usingPlay2x = true;
 
-
-                        Context context = getApplicationContext();
                         CharSequence text = "Play 2x selected";
-                        int duration = Toast.LENGTH_SHORT;
-
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
+                        Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
 
                         btnGameBack.setBackgroundColor(getResources().getColor(R.color.red));
                         hasUsedPlay2xBlack = true;
@@ -151,19 +160,11 @@ public class MainActivityGame extends Activity {
 
                 if (isWhitesTurn) {
                     if (hasUsedSkipWhite) {
-                        Context context = getApplicationContext();
                         CharSequence text = "Already Used";
-                        int duration = Toast.LENGTH_SHORT;
-
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
+                        Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
                     } else if (moveCounterWhite < 5 || moveCounterBlack < 5) {
-                        Context context = getApplicationContext();
                         CharSequence text = "Available after 5th move";
-                        int duration = Toast.LENGTH_SHORT;
-
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
+                        Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
                     } else if ((moveCounterWhite >= 5 || moveCounterBlack >= 5) && !hasUsedSkipWhite) {
                         //skipProcedure
 
@@ -180,12 +181,8 @@ public class MainActivityGame extends Activity {
                             infoBox.setText(getResources().getString(R.string.blackTurn));
 
 
-                        Context context = getApplicationContext();
                         CharSequence text = "Skip move selected";
-                        int duration = Toast.LENGTH_SHORT;
-
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
+                        Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
 
                         btnSkip.setBackgroundColor(getResources().getColor(R.color.red));
                         hasUsedSkipWhite = true;
@@ -193,19 +190,11 @@ public class MainActivityGame extends Activity {
 
                 } else {
                     if (hasUsedSkipBlack) {
-                        Context context = getApplicationContext();
                         CharSequence text = "Already Used";
-                        int duration = Toast.LENGTH_SHORT;
-
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
+                        Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
                     } else if (moveCounterWhite < 5 || moveCounterBlack < 5) {
-                        Context context = getApplicationContext();
                         CharSequence text = "Available after 5th move";
-                        int duration = Toast.LENGTH_SHORT;
-
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
+                        Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
                     } else if ((moveCounterWhite >= 5 || moveCounterBlack >= 5) && !hasUsedSkipBlack) {
                         //skipProcedure
 
@@ -222,12 +211,8 @@ public class MainActivityGame extends Activity {
                             infoBox.setText(getResources().getString(R.string.blackTurn));
 
 
-                        Context context = getApplicationContext();
                         CharSequence text = "Skip move selected";
-                        int duration = Toast.LENGTH_SHORT;
-
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
+                        Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
 
                         btnSkip.setBackgroundColor(getResources().getColor(R.color.red));
                         hasUsedSkipBlack = true;
@@ -293,10 +278,7 @@ public class MainActivityGame extends Activity {
         if (v.getBackground().getConstantState().equals(getDrawable(R.drawable.ic_white_circle).getConstantState())
                 || v.getBackground().getConstantState().equals(getDrawable(R.drawable.ic_black_circle).getConstantState())) {
             //invalid move - cell already taken
-            Context context = getApplicationContext();
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, getResources().getString(R.string.invalid), duration);
-            toast.show();
+            Toast.makeText(getApplicationContext(),R.string.invalid, Toast.LENGTH_SHORT).show();
         } else {
 
 
@@ -412,10 +394,7 @@ public class MainActivityGame extends Activity {
 
 
             }else{
-                Context context = getApplicationContext();
-                int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context, getResources().getString(R.string.invalid), duration);
-                toast.show();
+                        Toast.makeText(getApplicationContext(),R.string.invalid, Toast.LENGTH_SHORT).show();
             }
 
 
@@ -504,10 +483,7 @@ public class MainActivityGame extends Activity {
 
 
                 } else {
-                    Context context = getApplicationContext();
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(context, getResources().getString(R.string.invalid), duration);
-                    toast.show();
+                    Toast.makeText(getApplicationContext(),R.string.invalid, Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -524,6 +500,186 @@ public class MainActivityGame extends Activity {
                     }
             }
         }
+
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    void server() {
+        // WifiManager wm = (WifiManager) getSystemService(WIFI_SERVICE);
+        // String ip = Formatter.formatIpAddress(wm.getConnectionInfo()
+        // .getIpAddress());
+        String ip = getLocalIpAddress();
+        pd = new ProgressDialog(this);
+        pd.setMessage(getString(R.string.serverdlg_msg) + "\n(IP: " + ip
+                + ")");
+        pd.setTitle(R.string.serverdlg_title);
+        pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                finish();
+                if (serverSocket!=null) {
+                    try {
+                        serverSocket.close();
+                    } catch (IOException e) {
+                    }
+                    serverSocket=null;
+                }
+            }
+        });
+        pd.show();
+
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    serverSocket = new ServerSocket(PORT);
+                    socketGame = serverSocket.accept();
+                    serverSocket.close();
+                    serverSocket=null;
+                    commThread.start();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    socketGame = null;
+                }
+                procMsg.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        pd.dismiss();
+                        if (socketGame == null)
+                            finish();
+                    }
+                });
+            }
+        });
+        t.start();
+    }
+
+    void clientDlg() {
+        final EditText edtIP = new EditText(this);
+        edtIP.setText("10.0.2.2");
+        AlertDialog ad = new AlertDialog.Builder(this).setTitle("RPS Client")
+                .setMessage("Server IP").setView(edtIP)
+                .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        client(edtIP.getText().toString(), PORT); // to test with emulators: PORTaux);
+                    }
+                }).setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        finish();
+                    }
+                }).create();
+        ad.show();
+    }
+
+
+    void client(final String strIP, final int Port) {
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Log.d("RPS", "Connecting to the server  " + strIP);
+                    socketGame = new Socket(strIP, Port);
+                } catch (Exception e) {
+                    socketGame = null;
+                }
+                if (socketGame == null) {
+                    procMsg.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            finish();
+                        }
+                    });
+                    return;
+                }
+                commThread.start();
+            }
+        });
+        t.start();
+    }
+
+    Thread commThread = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            try {
+                input = new BufferedReader(new InputStreamReader(
+                        socketGame.getInputStream()));
+                output = new PrintWriter(socketGame.getOutputStream());
+                while (!Thread.currentThread().isInterrupted()) {
+                    String read = input.readLine();
+                    final int move = Integer.parseInt(read);
+                    Log.d("RPS", "Received: " + move);
+                    procMsg.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            //moveOtherPlayer(move); change here
+                        }
+                    });
+                }
+            } catch (Exception e) {
+                procMsg.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        finish();
+                        Toast.makeText(getApplicationContext(),R.string.game_finished, Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        }
+    });
+
+    protected void onPause() {
+        super.onPause();
+        try {
+            commThread.interrupt();
+            if (socketGame != null)
+                socketGame.close();
+            if (output != null)
+                output.close();
+            if (input != null)
+                input.close();
+        } catch (Exception e) {
+        }
+        input = null;
+        output = null;
+        socketGame = null;
+    };
+
+    public static String getLocalIpAddress() {
+        try {
+            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
+                NetworkInterface intf = en.nextElement();
+                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements();) {
+                    InetAddress inetAddress = enumIpAddr.nextElement();
+                    if (!inetAddress.isLoopbackAddress() && inetAddress instanceof Inet4Address) {
+                        return inetAddress.getHostAddress();
+                    }
+                }
+            }
+        } catch (SocketException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+
 
 
         public void onExit (View v){

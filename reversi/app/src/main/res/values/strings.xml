@@ -12,4 +12,10 @@
     <string name="blackTurn">Black\'s move</string>
     <string name="whiteTurn">White\'s move</string>
     <string name="credits">Game made by: \nPedro Lanhoso \nVasco Almeida</string>
+    <string name="error_netconn">Network Error</string>
+
+    <string name="serverdlg_title">RPS Server</string>
+    <string name="serverdlg_msg">Waiting for a client...</string>
+
+    <string name="game_finished">The game has ended</string>
 </resources>

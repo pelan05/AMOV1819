@@ -127,9 +127,10 @@ public class BoardChecker {
         for (int i = 0; i < 8 ; i++) {
             _x++;
             _y--;
-            if(_x < 0 || _y < 0 || _x >= 8 || _y >= 8)
+            if(_x < 0 || _y < 0 || _x >= 8 || _y >= 8) {
+                counter = 0;
                 break;
-
+            }
             if(grid[_x][_y].getCellValue() == value) {
                 counter++;
             }else{
@@ -173,8 +174,10 @@ public class BoardChecker {
         int counter = 0;
         for (int i = 0; i < 8; i++) {
             _x++;
-            if (_x < 0 || y < 0 || _x >= 8 || y >= 8)
+            if(_x < 0 || y < 0 || _x >= 8 || y >= 8) {
+                counter = 0;
                 break;
+            }
 
             if (grid[_x][y].getCellValue() == value) {
                 counter++;
@@ -220,8 +223,10 @@ public class BoardChecker {
         for (int i = 0; i < 8 ; i++) {
             _x++;
             _y++;
-            if(_x < 0 || _y < 0 || _x >= 8 || _y >= 8)
+            if(_x < 0 || _y < 0 || _x >= 8 || _y >= 8) {
+                counter = 0;
                 break;
+            }
 
             if(grid[_x][_y].getCellValue() == value) {
                 counter++;
@@ -265,8 +270,10 @@ public class BoardChecker {
         int counter = 0;
         for (int i = 0; i < 8 ; i++) {
             _y--;
-            if(x < 0 || _y < 0 || x >= 8 || _y >= 8)
+            if(x < 0 || _y < 0 || x >= 8 || _y >= 8) {
+                counter = 0;
                 break;
+            }
 
             if(grid[x][_y].getCellValue() == value) {
                 counter++;
@@ -310,9 +317,10 @@ public class BoardChecker {
         for (int i = 0; i < 8 ; i++) {
 
             _y++;
-            if(x < 0 || _y < 0 || x >= 8 || _y >= 8)
+            if(x < 0 || _y < 0 || x >= 8 || _y >= 8) {
+                counter = 0;
                 break;
-
+            }
             if(grid[x][_y].getCellValue() == value) {
                 counter++;
             }else {
@@ -355,8 +363,10 @@ public class BoardChecker {
         for (int i = 0; i < 8 ; i++) {
             _x--;
             _y--;
-            if(_x < 0 || _y < 0 || _x >= 8 || _y >= 8)
+            if(_x < 0 || _y < 0 || _x >= 8 || _y >= 8) {
+                counter = 0;
                 break;
+            }
 
             if(grid[_x][_y].getCellValue() == value) {
                 counter++;
@@ -400,8 +410,10 @@ public class BoardChecker {
         int counter = 0;
         for (int i = 0; i < 8 ; i++) {
             _x--;
-            if(_x < 0 || y < 0 || _x >= 8 || y >= 8)
+            if(_x < 0 || y < 0 || _x >= 8 || y >= 8) {
+                counter = 0;
                 break;
+            }
 
             if(grid[_x][y].getCellValue() == value) {
                 counter++;
@@ -445,8 +457,10 @@ public class BoardChecker {
         for (int i = 0; i < 8 ; i++) {
             _x--;
             _y++;
-            if(_x < 0 || _y < 0 || _x >= 8 || _y >= 8)
+            if(_x < 0 || _y < 0 || _x >= 8 || _y >= 8) {
+                counter = 0;
                 break;
+            }
 
             if(grid[_x][_y].getCellValue() == value) {
                 counter++;
