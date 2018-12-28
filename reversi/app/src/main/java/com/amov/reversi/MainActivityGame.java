@@ -129,7 +129,7 @@ public class MainActivityGame extends Activity {
                         CharSequence text = "Play 2x selected";
                         Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
 
-                        btnGameBack.setBackgroundColor(getResources().getColor(R.color.red));
+                        //btnGameBack.setBackgroundColor(getResources().getColor(R.color.red));
                         hasUsedPlay2xWhite = true;
                     }
                 } else {
@@ -147,7 +147,7 @@ public class MainActivityGame extends Activity {
                         CharSequence text = "Play 2x selected";
                         Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
 
-                        btnGameBack.setBackgroundColor(getResources().getColor(R.color.red));
+                        //btnGameBack.setBackgroundColor(getResources().getColor(R.color.red));
                         hasUsedPlay2xBlack = true;
                     }
                 }
@@ -186,7 +186,7 @@ public class MainActivityGame extends Activity {
                         CharSequence text = "Skip move selected";
                         Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
 
-                        btnSkip.setBackgroundColor(getResources().getColor(R.color.red));
+                        //btnSkip.setBackgroundColor(getResources().getColor(R.color.red));
                         hasUsedSkipWhite = true;
                     }
 
@@ -216,7 +216,7 @@ public class MainActivityGame extends Activity {
                         CharSequence text = "Skip move selected";
                         Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
 
-                        btnSkip.setBackgroundColor(getResources().getColor(R.color.red));
+                        //btnSkip.setBackgroundColor(getResources().getColor(R.color.red));
                         hasUsedSkipBlack = true;
                     }
                 }

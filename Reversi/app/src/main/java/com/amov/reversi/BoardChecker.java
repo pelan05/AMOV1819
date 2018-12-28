@@ -498,8 +498,8 @@ public class BoardChecker {
 
     public void updateBoardNetwork(int values[]){
         int i = 0;
-        for (int j = 0; j < ; j++) {
-            for (int k = 0; k < ; k++) {
+        for (int j = 0; j < 8; j++) {
+            for (int k = 0; k < 8; k++) {
                 grid[j][k].setCellValue(values[i]);
                 i++;
             }
