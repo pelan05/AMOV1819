@@ -24,6 +24,10 @@ public class MainActivityGame extends Activity {
     public static final int CLIENT = 3;
     int mode = SERVER;
 
+    public int counterWhite = 0, counterBlack = 0;
+    public int x = 0, y = 0;
+    public int i = 0, j = 0;
+
     private static final int PORT = 8899;
     private static final int PORTaux = 9988; // to test with emulators
 
@@ -297,49 +301,35 @@ public class MainActivityGame extends Activity {
 
 
             //gamemodes?
-        switch (mode) {
-            case 0://SinglePlayer - falta AI
+            switch (mode) {
+                case 0://SinglePlayer - falta AI
 
-
-                break;
-            case 1://MultiLocal - done 100% implemented
-
-
-                int x = 0, y = 0;
-                for (int i = 0; i < 8; i++) {
-                    for (int j = 0; j < 8; j++) {
-                        if (v.getId() == checker.grid[i][j].getIdCelula()) {
-                            x = i;
-                            y = j;
-                        }
-                    }
-                }
-
-
-                //verificaCoords se é jogada valida
-                if (checker.check(x, y, isWhitesTurn)) {
-                    //MUDA SELECAO
-                    if (isWhitesTurn) {
-                        this.moveCounterWhite++;
-                        checker.grid[x][y].changeWhite();
-                        for (int i = 0; i < 8; i++) {
-                            for (int j = 0; j < 8; j++) {
-                                if (checker.grid[i][j].getCellValue() == 1) {//1 é o val de branco
-                                    findViewById(checker.grid[i][j].getIdCelula()).setBackgroundResource(R.drawable.ic_white_circle);
-                                }
+                    x = 0;
+                    y = 0;
+                    for (i = 0; i < 8; i++) {
+                        for (j = 0; j < 8; j++) {
+                            if (v.getId() == checker.grid[i][j].getIdCelula()) {
+                                x = i;
+                                y = j;
                             }
                         }
-                    } else {
+                    }
+
+
+                    //verificaCoords se é jogada valida
+                    if (checker.check(x, y, false)) {//false means it's black's turn
+                        //MUDA SELECAO
+
                         this.moveCounterBlack++;
                         checker.grid[x][y].changeBlack();
-                        for (int i = 0; i < 8; i++) {
-                            for (int j = 0; j < 8; j++) {
+                        for (i = 0; i < 8; i++) {
+                            for (j = 0; j < 8; j++) {
                                 if (checker.grid[i][j].getCellValue() == 2) {//2 é o val de preto
                                     findViewById(checker.grid[i][j].getIdCelula()).setBackgroundResource(R.drawable.ic_black_circle);
                                 }
                             }
                         }
-                    }
+
 
 
                     //calcula trocas de cor
@@ -348,8 +338,9 @@ public class MainActivityGame extends Activity {
 
 
                     //atualiza counters
-                    int counterWhite = 0, counterBlack = 0;
-                    for (int i = 0; i < 64; i++) {
+                    counterWhite = 0;
+                    counterBlack = 0;
+                    for (i = 0; i < 64; i++) {
                         if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_white_circle).getConstantState())) {
                             counterWhite++;
                         } else if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_black_circle).getConstantState())) {
@@ -361,17 +352,55 @@ public class MainActivityGame extends Activity {
                     textBlack.setText(String.format(Locale.US, ": %d", counterBlack));
 
 
-                    //proxima jogada( , )
+
+
                     if (usingPlay2x) {
                         usingPlay2x = false;
+                        break;
                     } else {
+                        infoBox.setText(getResources().getString(R.string.whiteTurn));
 
-                        triggerTurn();
-                        if (isWhitesTurn)
-                            infoBox.setText(getResources().getString(R.string.whiteTurn));
-                        else
-                            infoBox.setText(getResources().getString(R.string.blackTurn));
+                        /*try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }*/
+                        //receber celula alvo (x, y) nao usados?
+                        //x=?;
+                        //y=?;
+                        for (int i = 0; i < 8; i++) {
+                            for (int j = 0; j < 8; j++) {
+                                if (checker.check(i, j, true)) {//true meANS IT'S whites turn
+                                    this.moveCounterWhite++;
+                                    checker.grid[i][j].changeWhite();
+                                    for (i = 0; i < 8; i++) {
+                                        for (j = 0; j < 8; j++) {
+                                            if (checker.grid[i][j].getCellValue() == 1) {//1 é o val de branco
+                                                findViewById(checker.grid[i][j].getIdCelula()).setBackgroundResource(R.drawable.ic_white_circle);
+                                            }
+                                        }
+                                    }
+                                    i = j = 8; break;
+                                }
+                            }
+                        }
 
+
+                            counterWhite = 0;
+                            counterBlack = 0;
+                            for (int i = 0; i < 64; i++) {
+                                if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_white_circle).getConstantState())) {
+                                    counterWhite++;
+                                } else if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_black_circle).getConstantState())) {
+                                    counterBlack++;
+                                }
+                            }
+
+                            textWhite.setText(String.format(Locale.US, ": %d", counterWhite));
+                            textBlack.setText(String.format(Locale.US, ": %d", counterBlack));
+
+
+                        infoBox.setText(getResources().getString(R.string.blackTurn));
                     }
 
                     //fim do jogo
@@ -380,6 +409,98 @@ public class MainActivityGame extends Activity {
                             infoBox.setText(getResources().getString(R.string.whiteWon));
                         else
                             infoBox.setText(getResources().getString(R.string.blackWon));
+
+
+            }else{
+                Context context = getApplicationContext();
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, getResources().getString(R.string.invalid), duration);
+                toast.show();
+            }
+
+
+                    break;
+                case 1://MultiLocal - done 100% implemented
+
+
+                    x = 0;
+                    y = 0;
+                    for (int i = 0; i < 8; i++) {
+                        for (int j = 0; j < 8; j++) {
+                            if (v.getId() == checker.grid[i][j].getIdCelula()) {
+                                x = i;
+                                y = j;
+                            }
+                        }
+                    }
+
+
+                    //verificaCoords se é jogada valida
+                    if (checker.check(x, y, isWhitesTurn)) {
+                        //MUDA SELECAO
+                        if (isWhitesTurn) {
+                            this.moveCounterWhite++;
+                            checker.grid[x][y].changeWhite();
+                            for (int i = 0; i < 8; i++) {
+                                for (int j = 0; j < 8; j++) {
+                                    if (checker.grid[i][j].getCellValue() == 1) {//1 é o val de branco
+                                        findViewById(checker.grid[i][j].getIdCelula()).setBackgroundResource(R.drawable.ic_white_circle);
+                                    }
+                                }
+                            }
+                        } else {
+                            this.moveCounterBlack++;
+                            checker.grid[x][y].changeBlack();
+                            for (int i = 0; i < 8; i++) {
+                                for (int j = 0; j < 8; j++) {
+                                    if (checker.grid[i][j].getCellValue() == 2) {//2 é o val de preto
+                                        findViewById(checker.grid[i][j].getIdCelula()).setBackgroundResource(R.drawable.ic_black_circle);
+                                    }
+                                }
+                            }
+                        }
+
+
+                        //calcula trocas de cor
+
+                        //replace cells
+
+
+                        //atualiza counters
+                        counterWhite = 0;
+                        counterBlack = 0;
+                        for (i = 0; i < 64; i++) {
+                            if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_white_circle).getConstantState())) {
+                                counterWhite++;
+                            } else if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_black_circle).getConstantState())) {
+                                counterBlack++;
+                            }
+                        }
+
+                        textWhite.setText(String.format(Locale.US, ": %d", counterWhite));
+                        textBlack.setText(String.format(Locale.US, ": %d", counterBlack));
+
+
+                        //proxima jogada( , )
+                        if (usingPlay2x) {
+                            usingPlay2x = false;
+                            break;
+                        } else {
+
+                            triggerTurn();
+                            if (isWhitesTurn)
+                                infoBox.setText(getResources().getString(R.string.whiteTurn));
+                            else
+                                infoBox.setText(getResources().getString(R.string.blackTurn));
+
+                        }
+
+                        //fim do jogo
+                        if (counterBlack + counterWhite == 64)
+                            if (counterWhite > counterBlack)
+                                infoBox.setText(getResources().getString(R.string.whiteWon));
+                            else
+                                infoBox.setText(getResources().getString(R.string.blackWon));
 
 
                 } else {
@@ -391,17 +512,17 @@ public class MainActivityGame extends Activity {
 
 
 
-        break;
-        case 2://Server - missing
+                        break;
+                        case 2://Server - missing
 
 
-        break;
-        case 3://Client - missing
+                            break;
+                        case 3://Client - missing
 
 
-        break;
-        }
-        }
+                            break;
+                    }
+            }
         }
 
 
