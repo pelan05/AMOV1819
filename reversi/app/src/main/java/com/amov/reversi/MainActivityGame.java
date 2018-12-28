@@ -2,6 +2,7 @@ package com.amov.reversi;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,14 +22,10 @@ public class MainActivityGame extends Activity {
     public static final int MULTILOCAL = 1;
     public static final int SERVER = 2;
     public static final int CLIENT = 3;
-
-    public static final int ME = 0;
-    public static final int OTHER = 1;
+    int mode = SERVER;
 
     private static final int PORT = 8899;
     private static final int PORTaux = 9988; // to test with emulators
-
-    int mode = SERVER;
 
     public int moveCounterWhite = 0;
     public int moveCounterBlack = 0;
@@ -63,6 +60,11 @@ public class MainActivityGame extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+
+        Intent intent = getIntent();
+        if (intent != null)
+            mode = intent.getIntExtra("mode", SERVER);
 
 
         this.btnGameBack = (Button) findViewById(R.id.btnGameBack);
@@ -284,6 +286,19 @@ public class MainActivityGame extends Activity {
 
 
     public void onClickGameButton(View v) {
+
+    //gamemodes?
+        switch(mode){
+            case 0://SinglePlayer - falta AI
+                break;
+            case 1://MultiLocal - done 100% implemented
+                break;
+            case 2://Server - missing
+                break;
+            case 3://Client - missing
+                break;
+        }
+
 
 
         if (v.getBackground().getConstantState().equals(getDrawable(R.drawable.ic_white_circle).getConstantState())
