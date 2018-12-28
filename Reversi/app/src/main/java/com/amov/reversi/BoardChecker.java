@@ -6,9 +6,13 @@ public class BoardChecker {
 
     public Cell[][] grid = new Cell[8][8];
     public int x = 0, y = 0;
+
     public boolean isWhitesTurn;
     public boolean result;
+
+
     public int sum = 0;
+
 
     public BoardChecker(){}
 

@@ -32,9 +32,12 @@ public class MainActivityGame extends Activity {
 
     public int moveCounterWhite = 0;
     public int moveCounterBlack = 0;
-    public boolean hasUsedReversi = false;
-    public boolean hasUsedSkip = false;
+    public boolean hasUsedPlay2xBlack = false;
+    public boolean hasUsedPlay2xWhite = false;
+    public boolean hasUsedSkipWhite = false;
+    public boolean hasUsedSkipBlack = false;
     public boolean isWhitesTurn = false;
+    public boolean usingPlay2x = false;
 
     public int[] btnList= {//array de ids de botao
             R.id.btn0_0, R.id.btn0_1, R.id.btn0_2, R.id.btn0_3, R.id.btn0_4, R.id.btn0_5, R.id.btn0_6, R.id.btn0_7,
@@ -66,54 +69,166 @@ public class MainActivityGame extends Activity {
         btnGameBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(moveCounterBlack >= 5 || moveCounterWhite >= 5 && !hasUsedReversi) {
-                    //reversiProcedure
 
-                    btnGameBack.setBackgroundColor(getResources().getColor(R.color.red));
-                    hasUsedReversi = true;
-                }else if(moveCounterBlack < 5 || moveCounterWhite <5){
-                    Context context = getApplicationContext();
-                    CharSequence text = "Available after 5th move";
-                    int duration = Toast.LENGTH_SHORT;
 
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                }else if(hasUsedReversi){
-                    Context context = getApplicationContext();
-                    CharSequence text = "Already Used";
-                    int duration = Toast.LENGTH_SHORT;
+        if(isWhitesTurn) {
+            if (hasUsedPlay2xWhite) {
+                Context context = getApplicationContext();
+                CharSequence text = "Already Used";
+                int duration = Toast.LENGTH_SHORT;
 
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                }
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            } else if (moveCounterBlack < 5 || moveCounterWhite < 5) {
+                Context context = getApplicationContext();
+                CharSequence text = "Available after 5th move";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            } else if (moveCounterBlack >= 5 || moveCounterWhite >= 5 && !hasUsedPlay2xWhite) {
+                //Play 2x procedure
+
+                usingPlay2x = true;
+
+
+                Context context = getApplicationContext();
+                CharSequence text = "Play 2x selected";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+
+                btnGameBack.setBackgroundColor(getResources().getColor(R.color.red));
+                hasUsedPlay2xWhite = true;
+            }
+        }else{
+            if (hasUsedPlay2xBlack) {
+                Context context = getApplicationContext();
+                CharSequence text = "Already Used";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            } else if (moveCounterBlack < 5 || moveCounterWhite < 5) {
+                Context context = getApplicationContext();
+                CharSequence text = "Available after 5th move";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            } else if (moveCounterBlack >= 5 || moveCounterWhite >= 5 && !hasUsedPlay2xBlack) {
+                //Play 2x procedure
+
+                usingPlay2x = true;
+
+
+                Context context = getApplicationContext();
+                CharSequence text = "Play 2x selected";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+
+                btnGameBack.setBackgroundColor(getResources().getColor(R.color.red));
+                hasUsedPlay2xBlack = true;
+            }
+        }
+
+
             }
         });
         this.btnSkip = (Button) findViewById(R.id.btnGameSkip);
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(moveCounterWhite >= 5 || moveCounterBlack >= 5 && !hasUsedSkip) {
-                    //skipProcedure
 
-                    btnSkip.setBackgroundColor(getResources().getColor(R.color.red));
-                    hasUsedSkip = true;
-                }else if(moveCounterWhite < 5 || moveCounterBlack < 5){
-                    Context context = getApplicationContext();
-                    CharSequence text = "Available after 5th move";
-                    int duration = Toast.LENGTH_SHORT;
+                if (isWhitesTurn) {
+                    if (hasUsedSkipWhite) {
+                        Context context = getApplicationContext();
+                        CharSequence text = "Already Used";
+                        int duration = Toast.LENGTH_SHORT;
 
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                }else if(hasUsedSkip){
-                    Context context = getApplicationContext();
-                    CharSequence text = "Already Used";
-                    int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    } else if (moveCounterWhite < 5 || moveCounterBlack < 5) {
+                        Context context = getApplicationContext();
+                        CharSequence text = "Available after 5th move";
+                        int duration = Toast.LENGTH_SHORT;
 
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    } else if ((moveCounterWhite >= 5 || moveCounterBlack >= 5) && !hasUsedSkipWhite) {
+                        //skipProcedure
+
+                        if (isWhitesTurn)
+                            moveCounterWhite--;
+                        else
+                            moveCounterBlack--;
+
+                        triggerTurn();
+
+                        if (isWhitesTurn)
+                            infoBox.setText(getResources().getString(R.string.whiteTurn));
+                        else
+                            infoBox.setText(getResources().getString(R.string.blackTurn));
+
+
+                        Context context = getApplicationContext();
+                        CharSequence text = "Skip move selected";
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+
+                        btnSkip.setBackgroundColor(getResources().getColor(R.color.red));
+                        hasUsedSkipWhite = true;
+                    }
+
+                } else {
+                    if (hasUsedSkipBlack) {
+                        Context context = getApplicationContext();
+                        CharSequence text = "Already Used";
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    } else if (moveCounterWhite < 5 || moveCounterBlack < 5) {
+                        Context context = getApplicationContext();
+                        CharSequence text = "Available after 5th move";
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    } else if ((moveCounterWhite >= 5 || moveCounterBlack >= 5) && !hasUsedSkipBlack) {
+                        //skipProcedure
+
+                        if (isWhitesTurn)
+                            moveCounterWhite--;
+                        else
+                            moveCounterBlack--;
+
+                        triggerTurn();
+
+                        if (isWhitesTurn)
+                            infoBox.setText(getResources().getString(R.string.whiteTurn));
+                        else
+                            infoBox.setText(getResources().getString(R.string.blackTurn));
+
+
+                        Context context = getApplicationContext();
+                        CharSequence text = "Skip move selected";
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+
+                        btnSkip.setBackgroundColor(getResources().getColor(R.color.red));
+                        hasUsedSkipBlack = true;
+                    }
                 }
-            }
-        });
+
+            }});
 
         checker = new BoardChecker();
 
@@ -239,12 +354,17 @@ public class MainActivityGame extends Activity {
 
 
                 //proxima jogada( , )
-                triggerTurn();
-                if (isWhitesTurn)
-                    infoBox.setText(getResources().getString(R.string.whiteTurn));
-                else
-                    infoBox.setText(getResources().getString(R.string.blackTurn));
+                if(usingPlay2x){
+                    usingPlay2x = false;
+                }else{
 
+                    triggerTurn();
+                    if (isWhitesTurn)
+                        infoBox.setText(getResources().getString(R.string.whiteTurn));
+                    else
+                        infoBox.setText(getResources().getString(R.string.blackTurn));
+
+                }
 
                 //fim do jogo
                 if (counterBlack + counterWhite == 64)
@@ -264,35 +384,6 @@ public class MainActivityGame extends Activity {
 
         }
 
-
-        public void skipMove (View v){
-            //TODO criar logica
-            if (isWhitesTurn)
-                moveCounterWhite--;
-            else
-                moveCounterBlack--;
-
-            triggerTurn();
-
-
-            Context context = getApplicationContext();
-            CharSequence text = "Skip move selected";
-            int duration = Toast.LENGTH_SHORT;
-
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
-
-
-        public void onReversi (View v){
-            //TODO criar logica
-            Context context = getApplicationContext();
-            CharSequence text = "REVERSI selected";
-            int duration = Toast.LENGTH_SHORT;
-
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
 
         public void onExit (View v){
 

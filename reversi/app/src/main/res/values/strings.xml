@@ -4,6 +4,7 @@
     <string name="buttonTextDescriptor">gameButton</string>
     <string name="exitButton">Exit Game</string>
     <string name="initialScore">: 2</string>
+    <string name="replay">Play   2x</string>
     <string name="skip">Skip</string>
     <string name="invalid">Invalid Move!</string>
     <string name="blackWon">Congratulations, black won</string>
