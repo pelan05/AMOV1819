@@ -5,6 +5,7 @@ import android.app.Activity;
 public class BoardChecker {
 
     public Cell[][] grid = new Cell[8][8];
+    public Integer[] values = new Integer[8];
     public int x = 0, y = 0;
 
     public boolean isWhitesTurn;
@@ -504,6 +505,18 @@ public class BoardChecker {
                 i++;
             }
         }
+    }
+
+    public Integer[] sendBoard(){
+        int i = 0;
+        for (int j = 0; j < 8; j++) {
+            for (int k = 0; k < 8; k++) {
+                values[i] = grid[j][k].getCellValue();
+                i++;
+            }
+        }
+
+        return values;
     }
 
 
