@@ -274,6 +274,21 @@ public class MainActivityGame extends Activity {
     }
 
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mode == SERVER)
+            server();
+        else if(mode == CLIENT)  // CLIENT
+            clientDlg();
+        else{
+            //do nothing?
+        }
+    }
+
+
+
     public void onClickGameButton(View v) {
 
 
@@ -514,8 +529,7 @@ public class MainActivityGame extends Activity {
     //
     void server() {
         // WifiManager wm = (WifiManager) getSystemService(WIFI_SERVICE);
-        // String ip = Formatter.formatIpAddress(wm.getConnectionInfo()
-        // .getIpAddress());
+        // String ip = Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress());
         String ip = getLocalIpAddress();
         pd = new ProgressDialog(this);
         pd.setMessage(getString(R.string.serverdlg_msg) + "\n(IP: " + ip
