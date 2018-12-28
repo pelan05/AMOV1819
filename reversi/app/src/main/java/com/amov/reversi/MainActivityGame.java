@@ -36,7 +36,7 @@ public class MainActivityGame extends Activity {
     public boolean isWhitesTurn = false;
     public boolean usingPlay2x = false;
 
-    public int[] btnList= {//array de ids de botao
+    public int[] btnList = {//array de ids de botao
             R.id.btn0_0, R.id.btn0_1, R.id.btn0_2, R.id.btn0_3, R.id.btn0_4, R.id.btn0_5, R.id.btn0_6, R.id.btn0_7,
             R.id.btn1_0, R.id.btn1_1, R.id.btn1_2, R.id.btn1_3, R.id.btn1_4, R.id.btn1_5, R.id.btn1_6, R.id.btn1_7,
             R.id.btn2_0, R.id.btn2_1, R.id.btn2_2, R.id.btn2_3, R.id.btn2_4, R.id.btn2_5, R.id.btn2_6, R.id.btn2_7,
@@ -73,69 +73,69 @@ public class MainActivityGame extends Activity {
             public void onClick(View v) {
 
 
-        if(isWhitesTurn) {
-            if (hasUsedPlay2xWhite) {
-                Context context = getApplicationContext();
-                CharSequence text = "Already Used";
-                int duration = Toast.LENGTH_SHORT;
+                if (isWhitesTurn) {
+                    if (hasUsedPlay2xWhite) {
+                        Context context = getApplicationContext();
+                        CharSequence text = "Already Used";
+                        int duration = Toast.LENGTH_SHORT;
 
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-            } else if (moveCounterBlack < 5 || moveCounterWhite < 5) {
-                Context context = getApplicationContext();
-                CharSequence text = "Available after 5th move";
-                int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    } else if (moveCounterBlack < 5 || moveCounterWhite < 5) {
+                        Context context = getApplicationContext();
+                        CharSequence text = "Available after 5th move";
+                        int duration = Toast.LENGTH_SHORT;
 
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-            } else if (moveCounterBlack >= 5 || moveCounterWhite >= 5 && !hasUsedPlay2xWhite) {
-                //Play 2x procedure
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    } else if (moveCounterBlack >= 5 || moveCounterWhite >= 5 && !hasUsedPlay2xWhite) {
+                        //Play 2x procedure
 
-                usingPlay2x = true;
-
-
-                Context context = getApplicationContext();
-                CharSequence text = "Play 2x selected";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-
-                btnGameBack.setBackgroundColor(getResources().getColor(R.color.red));
-                hasUsedPlay2xWhite = true;
-            }
-        }else{
-            if (hasUsedPlay2xBlack) {
-                Context context = getApplicationContext();
-                CharSequence text = "Already Used";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-            } else if (moveCounterBlack < 5 || moveCounterWhite < 5) {
-                Context context = getApplicationContext();
-                CharSequence text = "Available after 5th move";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-            } else if (moveCounterBlack >= 5 || moveCounterWhite >= 5 && !hasUsedPlay2xBlack) {
-                //Play 2x procedure
-
-                usingPlay2x = true;
+                        usingPlay2x = true;
 
 
-                Context context = getApplicationContext();
-                CharSequence text = "Play 2x selected";
-                int duration = Toast.LENGTH_SHORT;
+                        Context context = getApplicationContext();
+                        CharSequence text = "Play 2x selected";
+                        int duration = Toast.LENGTH_SHORT;
 
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
 
-                btnGameBack.setBackgroundColor(getResources().getColor(R.color.red));
-                hasUsedPlay2xBlack = true;
-            }
-        }
+                        btnGameBack.setBackgroundColor(getResources().getColor(R.color.red));
+                        hasUsedPlay2xWhite = true;
+                    }
+                } else {
+                    if (hasUsedPlay2xBlack) {
+                        Context context = getApplicationContext();
+                        CharSequence text = "Already Used";
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    } else if (moveCounterBlack < 5 || moveCounterWhite < 5) {
+                        Context context = getApplicationContext();
+                        CharSequence text = "Available after 5th move";
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    } else if (moveCounterBlack >= 5 || moveCounterWhite >= 5 && !hasUsedPlay2xBlack) {
+                        //Play 2x procedure
+
+                        usingPlay2x = true;
+
+
+                        Context context = getApplicationContext();
+                        CharSequence text = "Play 2x selected";
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+
+                        btnGameBack.setBackgroundColor(getResources().getColor(R.color.red));
+                        hasUsedPlay2xBlack = true;
+                    }
+                }
 
 
             }
@@ -230,7 +230,8 @@ public class MainActivityGame extends Activity {
                     }
                 }
 
-            }});
+            }
+        });
 
         checker = new BoardChecker();
 
@@ -239,13 +240,12 @@ public class MainActivityGame extends Activity {
         this.infoBox = (TextView) findViewById(R.id.txtInfo);
 
         int k = 0;                          //inicialização de array de celulas
-        for (int i = 0; i < 8 ; i++) {
-            for (int j = 0; j < 8 ; j++) {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
                 checker.cellInitializer(i, j, this, btnList[k]);
                 k++;
             }
         }
-
 
 
         checker.grid[3][3].changeWhite();
@@ -258,18 +258,17 @@ public class MainActivityGame extends Activity {
         findViewById(R.id.btn4_4).setBackgroundResource(R.drawable.ic_white_circle);
 
 
-
         //codigo check cells
         int counterWhite = 0, counterBlack = 0;
-        for (int i = 0; i < 64 ; i++) {
-            if(findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_white_circle).getConstantState())){
+        for (int i = 0; i < 64; i++) {
+            if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_white_circle).getConstantState())) {
                 counterWhite++;
-            }else if(findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_black_circle).getConstantState())){
+            } else if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_black_circle).getConstantState())) {
                 counterBlack++;
             }
         }
 
-        textWhite.setText(String.format(Locale.US,": %d", counterWhite));
+        textWhite.setText(String.format(Locale.US, ": %d", counterWhite));
         textBlack.setText(String.format(Locale.US, ": %d", counterBlack));
 
         /*MUDAR PARA PRETO (SAMPLE)
@@ -284,21 +283,7 @@ public class MainActivityGame extends Activity {
     }
 
 
-
     public void onClickGameButton(View v) {
-
-    //gamemodes?
-        switch(mode){
-            case 0://SinglePlayer - falta AI
-                break;
-            case 1://MultiLocal - done 100% implemented
-                break;
-            case 2://Server - missing
-                break;
-            case 3://Client - missing
-                break;
-        }
-
 
 
         if (v.getBackground().getConstantState().equals(getDrawable(R.drawable.ic_white_circle).getConstantState())
@@ -311,92 +296,112 @@ public class MainActivityGame extends Activity {
         } else {
 
 
-            int x = 0, y = 0;
-            for (int i = 0; i < 8; i++) {
-                for (int j = 0; j < 8; j++) {
-                    if (v.getId() == checker.grid[i][j].getIdCelula()) {
-                        x = i;
-                        y = j;
+            //gamemodes?
+        switch (mode) {
+            case 0://SinglePlayer - falta AI
+
+
+                break;
+            case 1://MultiLocal - done 100% implemented
+
+
+                int x = 0, y = 0;
+                for (int i = 0; i < 8; i++) {
+                    for (int j = 0; j < 8; j++) {
+                        if (v.getId() == checker.grid[i][j].getIdCelula()) {
+                            x = i;
+                            y = j;
+                        }
                     }
                 }
-            }
 
 
-            //verificaCoords se é jogada valida
-            if (checker.check(x, y, isWhitesTurn)) {
-                //MUDA SELECAO
-                if (isWhitesTurn) {
-                    this.moveCounterWhite++;
-                    checker.grid[x][y].changeWhite();
-                    for (int i = 0; i < 8; i++) {
-                        for (int j = 0; j < 8; j++) {
-                            if (checker.grid[i][j].getCellValue() == 1) {//1 é o val de branco
-                                findViewById(checker.grid[i][j].getIdCelula()).setBackgroundResource(R.drawable.ic_white_circle);
+                //verificaCoords se é jogada valida
+                if (checker.check(x, y, isWhitesTurn)) {
+                    //MUDA SELECAO
+                    if (isWhitesTurn) {
+                        this.moveCounterWhite++;
+                        checker.grid[x][y].changeWhite();
+                        for (int i = 0; i < 8; i++) {
+                            for (int j = 0; j < 8; j++) {
+                                if (checker.grid[i][j].getCellValue() == 1) {//1 é o val de branco
+                                    findViewById(checker.grid[i][j].getIdCelula()).setBackgroundResource(R.drawable.ic_white_circle);
+                                }
+                            }
+                        }
+                    } else {
+                        this.moveCounterBlack++;
+                        checker.grid[x][y].changeBlack();
+                        for (int i = 0; i < 8; i++) {
+                            for (int j = 0; j < 8; j++) {
+                                if (checker.grid[i][j].getCellValue() == 2) {//2 é o val de preto
+                                    findViewById(checker.grid[i][j].getIdCelula()).setBackgroundResource(R.drawable.ic_black_circle);
+                                }
                             }
                         }
                     }
+
+
+                    //calcula trocas de cor
+
+                    //replace cells
+
+
+                    //atualiza counters
+                    int counterWhite = 0, counterBlack = 0;
+                    for (int i = 0; i < 64; i++) {
+                        if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_white_circle).getConstantState())) {
+                            counterWhite++;
+                        } else if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_black_circle).getConstantState())) {
+                            counterBlack++;
+                        }
+                    }
+
+                    textWhite.setText(String.format(Locale.US, ": %d", counterWhite));
+                    textBlack.setText(String.format(Locale.US, ": %d", counterBlack));
+
+
+                    //proxima jogada( , )
+                    if (usingPlay2x) {
+                        usingPlay2x = false;
+                    } else {
+
+                        triggerTurn();
+                        if (isWhitesTurn)
+                            infoBox.setText(getResources().getString(R.string.whiteTurn));
+                        else
+                            infoBox.setText(getResources().getString(R.string.blackTurn));
+
+                    }
+
+                    //fim do jogo
+                    if (counterBlack + counterWhite == 64)
+                        if (counterWhite > counterBlack)
+                            infoBox.setText(getResources().getString(R.string.whiteWon));
+                        else
+                            infoBox.setText(getResources().getString(R.string.blackWon));
+
+
                 } else {
-                    this.moveCounterBlack++;
-                    checker.grid[x][y].changeBlack();
-                    for (int i = 0; i < 8; i++) {
-                        for (int j = 0; j < 8; j++) {
-                            if (checker.grid[i][j].getCellValue() == 2){//2 é o val de preto
-                            findViewById(checker.grid[i][j].getIdCelula()).setBackgroundResource(R.drawable.ic_black_circle);
-                            }
-                        }
-                    }
+                    Context context = getApplicationContext();
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, getResources().getString(R.string.invalid), duration);
+                    toast.show();
                 }
 
 
-                //calcula trocas de cor
 
-                //replace cells
-
-
-
-                //atualiza counters
-                int counterWhite = 0, counterBlack = 0;
-                for (int i = 0; i < 64; i++) {
-                    if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_white_circle).getConstantState())) {
-                        counterWhite++;
-                    } else if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_black_circle).getConstantState())) {
-                        counterBlack++;
-                    }
-                }
-
-                textWhite.setText(String.format(Locale.US, ": %d", counterWhite));
-                textBlack.setText(String.format(Locale.US, ": %d", counterBlack));
+        break;
+        case 2://Server - missing
 
 
-                //proxima jogada( , )
-                if(usingPlay2x){
-                    usingPlay2x = false;
-                }else{
-
-                    triggerTurn();
-                    if (isWhitesTurn)
-                        infoBox.setText(getResources().getString(R.string.whiteTurn));
-                    else
-                        infoBox.setText(getResources().getString(R.string.blackTurn));
-
-                }
-
-                //fim do jogo
-                if (counterBlack + counterWhite == 64)
-                    if (counterWhite > counterBlack)
-                        infoBox.setText(getResources().getString(R.string.whiteWon));
-                    else
-                        infoBox.setText(getResources().getString(R.string.blackWon));
+        break;
+        case 3://Client - missing
 
 
-            } else {
-                Context context = getApplicationContext();
-                int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context, getResources().getString(R.string.invalid), duration);
-                toast.show();
-            }
+        break;
         }
-
+        }
         }
 
 
