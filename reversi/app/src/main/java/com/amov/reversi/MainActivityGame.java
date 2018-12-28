@@ -46,6 +46,8 @@ public class MainActivityGame extends Activity {
     public int x = 0, y = 0;
     public int i = 0, j = 0;
 
+    public Integer move[] = new Integer[64];
+
     private static final int PORT = 8899;
     private static final int PORTaux = 9988; // to test with emulators
 
@@ -609,16 +611,21 @@ public class MainActivityGame extends Activity {
         @Override
         public void run() {
             try {
-                input = new BufferedReader(new InputStreamReader(
-                        socketGame.getInputStream()));
+                input = new BufferedReader(new InputStreamReader(socketGame.getInputStream()));
                 output = new PrintWriter(socketGame.getOutputStream());
                 while (!Thread.currentThread().isInterrupted()) {
                     String read = input.readLine();
-                    final int move = Integer.parseInt(read);
-                    Log.d("RPS", "Received: " + move);
+
+                    for (int i = 0; i < 64; i++) {
+                        move[i] = Integer.parseInt(read);
+                    }
+                    
                     procMsg.post(new Runnable() {
                         @Override
                         public void run() {
+
+                            //code to save the received data
+
                             //moveOtherPlayer(move); change here
                         }
                     });
