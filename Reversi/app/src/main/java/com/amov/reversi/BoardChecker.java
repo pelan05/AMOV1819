@@ -497,11 +497,11 @@ public class BoardChecker {
     }
 
 
-    public void updateBoardNetwork(int values[]){
+    public void updateBoardNetwork(Integer values[]){
         int i = 0;
         for (int j = 0; j < 8; j++) {
             for (int k = 0; k < 8; k++) {
-                grid[j][k].setCellValue(values[i]);
+                grid[j][k].setCellValue(values[i].intValue());
                 i++;
             }
         }

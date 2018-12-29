@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="option">Escolha uma opção:</string>
+    <string name="local">Local</string>
+    <string name="comp">Vs. Computador</string>
+    <string name="cli">Cliente</string>
+    <string name="serv">Servidor</string>
+    <string name="credBtn">Créditos</string>
+    <string name="app_name">Reversi</string>
+    <string name="MainActivityGameTitle">Boa sorte!</string>
+    <string name="exitButton">Voltar</string>
+    <string name="skip">Saltar turno</string>
+    <string name="replay">Jogada Dupla</string>
+    <string name="invalid">Jogada Inválida!</string>
+    <string name="blackWon">Parabéns, pretas vencem!</string>
+    <string name="whiteWon">Parabéns, brancas vencem!</string>
+    <string name="blackTurn">Vez das pretas</string>
+    <string name="whiteTurn">Vez das brancas</string>
+    <string name="credits">Feito por: \nPedro Lanhoso \nVasco Almeida</string>
+    <string name="error_netconn">Erro de rede</string>
+    <string name="serverdlg_title">Servidor RPS</string>
+    <string name="serverdlg_msg">À espera de um cliente...</string>
+    <string name="game_finished">O jogo acabou</string>
+    <string name="buttonTextDescriptor">Butão de jogo</string>
+    <string name="initialScore">:2</string>
+    <string name="lang">Língua</string>
+    <string name="avail">Disponível depois da 5ª jogada</string>
+    <string name="used">Já usado</string>
+    <string name="twice">Jogada dupla selecionada</string>
+    <string name="skippu">Saltando a jogada</string>
+    <string name="optCrd">Créditos selecionados</string>
+    <string name="opt3">Cliente selecionado</string>
+    <string name="opt2">Servidor selecionado</string>
+    <string name="opt1">Jogo local selecionado</string>
+    <string name="opt0">Jogo offline selecionado</string>
+</resources>

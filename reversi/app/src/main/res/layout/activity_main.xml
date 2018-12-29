@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:background="@color/pale_green"
         android:gravity="top"
-        android:text="Choose your option:"
+        android:text="@string/option"
         android:textAlignment="center"
         android:textAppearance="@android:style/TextAppearance.Holo.Large"
         android:textColor="@color/dark_green"
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onMulti"
-        android:text="Multiplayer (Local)"
+        android:text="@string/local"
         android:textAppearance="@android:style/TextAppearance.Holo.Medium"
         android:textStyle="bold"
         android:visibility="visible"/>
@@ -49,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onLocal"
-        android:text="Vs. Computer"
+        android:text="@string/comp"
         android:textStyle="bold"
         android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
 
@@ -61,7 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClient"
-        android:text="Multiplayer (Client)"
+        android:text="@string/cli"
         android:textStyle="bold"
         android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
 
@@ -73,7 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onServer"
-        android:text="Multiplayer (Server)"
+        android:text="@string/serv"
         android:textStyle="bold"
         android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
     <Button
@@ -84,14 +84,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onCredits"
-        android:text="Credits"
+        android:text="@string/credBtn"
         android:textStyle="bold"
         android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
 
-
-
-
-
+    <Button
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="40dp"
+        android:id="@+id/btnLang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lang"
+        android:textStyle="bold" />
 
 
 </LinearLayout>

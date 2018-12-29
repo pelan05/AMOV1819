@@ -1,21 +1,35 @@
 <resources>
+    <string name="option">Choose your option:</string>
+    <string name="local">Local</string>
+    <string name="comp">Vs. Computer</string>
+    <string name="cli">Client</string>
+    <string name="serv">Server</string>
+    <string name="credBtn">Credits</string>
     <string name="app_name">Reversi</string>
     <string name="MainActivityGameTitle">Good Luck!</string>
     <string name="buttonTextDescriptor">gameButton</string>
-    <string name="exitButton">Exit Game</string>
+    <string name="exitButton">Return</string>
     <string name="initialScore">: 2</string>
     <string name="replay">Play   2x</string>
     <string name="skip">Skip</string>
     <string name="invalid">Invalid Move!</string>
-    <string name="blackWon">Congratulations, black won</string>
-    <string name="whiteWon">Congratulations, white won</string>
+    <string name="blackWon">Congratulations, black won!</string>
+    <string name="whiteWon">Congratulations, white won!</string>
     <string name="blackTurn">Black\'s move</string>
     <string name="whiteTurn">White\'s move</string>
     <string name="credits">Game made by: \nPedro Lanhoso \nVasco Almeida</string>
     <string name="error_netconn">Network Error</string>
-
     <string name="serverdlg_title">RPS Server</string>
     <string name="serverdlg_msg">Waiting for a client...</string>
-
     <string name="game_finished">The game has ended</string>
+    <string name="lang">Language</string>
+    <string name="avail">Available after 5th move</string>
+    <string name="used">Already used</string>
+    <string name="twice">Play 2x selected</string>
+    <string name="skippu">Skipping turn</string>
+    <string name="optCrd">Credits selected</string>
+    <string name="opt3">Client selected</string>
+    <string name="opt2">Server selected</string>
+    <string name="opt1">Local Multiplayer Game Selected</string>
+    <string name="opt0">Computer game selected</string>
 </resources>

@@ -108,6 +108,7 @@ public class MainActivityGame extends Activity {
 
 
         this.btnGameBack = (Button) findViewById(R.id.btnGameBack);
+        //play twice button
         btnGameBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,10 +116,10 @@ public class MainActivityGame extends Activity {
 
                 if (isWhitesTurn) {
                     if (hasUsedPlay2xWhite) {
-                        CharSequence text = "Already Used";
+                        CharSequence text = getResources().getString(R.string.used);
                         Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
                     } else if (moveCounterBlack < 5 || moveCounterWhite < 5) {
-                        CharSequence text = "Available after 5th move";
+                        CharSequence text = getResources().getString(R.string.avail);
                         Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
                     } else if (moveCounterBlack >= 5 || moveCounterWhite >= 5 && !hasUsedPlay2xWhite) {
                         //Play 2x procedure
@@ -126,7 +127,7 @@ public class MainActivityGame extends Activity {
                         usingPlay2x = true;
 
 
-                        CharSequence text = "Play 2x selected";
+                        CharSequence text = getResources().getString(R.string.twice);
                         Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
 
                         //btnGameBack.setBackgroundColor(getResources().getColor(R.color.red));
@@ -134,17 +135,17 @@ public class MainActivityGame extends Activity {
                     }
                 } else {
                     if (hasUsedPlay2xBlack) {
-                        CharSequence text = "Already Used";
+                        CharSequence text = getResources().getString(R.string.used);
                         Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
                     } else if (moveCounterBlack < 5 || moveCounterWhite < 5) {
-                        CharSequence text = "Available after 5th move";
+                        CharSequence text = getResources().getString(R.string.avail);
                         Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
                     } else if (moveCounterBlack >= 5 || moveCounterWhite >= 5 && !hasUsedPlay2xBlack) {
                         //Play 2x procedure
 
                         usingPlay2x = true;
 
-                        CharSequence text = "Play 2x selected";
+                        CharSequence text = getResources().getString(R.string.twice);
                         Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
 
                         //btnGameBack.setBackgroundColor(getResources().getColor(R.color.red));
@@ -156,16 +157,17 @@ public class MainActivityGame extends Activity {
             }
         });
         this.btnSkip = (Button) findViewById(R.id.btnGameSkip);
+        // skip turn button
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if (isWhitesTurn) {
                     if (hasUsedSkipWhite) {
-                        CharSequence text = "Already Used";
+                        CharSequence text = getResources().getString(R.string.used);
                         Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
                     } else if (moveCounterWhite < 5 || moveCounterBlack < 5) {
-                        CharSequence text = "Available after 5th move";
+                        CharSequence text = getResources().getString(R.string.avail);
                         Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
                     } else if ((moveCounterWhite >= 5 || moveCounterBlack >= 5) && !hasUsedSkipWhite) {
                         //skipProcedure
@@ -183,7 +185,7 @@ public class MainActivityGame extends Activity {
                             infoBox.setText(getResources().getString(R.string.blackTurn));
 
 
-                        CharSequence text = "Skip move selected";
+                        CharSequence text = getResources().getString(R.string.skippu);
                         Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
 
                         //btnSkip.setBackgroundColor(getResources().getColor(R.color.red));
@@ -192,10 +194,10 @@ public class MainActivityGame extends Activity {
 
                 } else {
                     if (hasUsedSkipBlack) {
-                        CharSequence text = "Already Used";
+                        CharSequence text = getResources().getString(R.string.used);
                         Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
                     } else if (moveCounterWhite < 5 || moveCounterBlack < 5) {
-                        CharSequence text = "Available after 5th move";
+                        CharSequence text = getResources().getString(R.string.avail);
                         Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
                     } else if ((moveCounterWhite >= 5 || moveCounterBlack >= 5) && !hasUsedSkipBlack) {
                         //skipProcedure
@@ -213,7 +215,7 @@ public class MainActivityGame extends Activity {
                             infoBox.setText(getResources().getString(R.string.blackTurn));
 
 
-                        CharSequence text = "Skip move selected";
+                        CharSequence text = getResources().getString(R.string.skippu);
                         Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
 
                         //btnSkip.setBackgroundColor(getResources().getColor(R.color.red));
@@ -507,15 +509,194 @@ public class MainActivityGame extends Activity {
 
 
 
-                        break;
-                        case 2://Server - missing
+                    break;
+
+                case 2://Server - missing
+                    move = checker.sendBoard();
+
+                    x = 0;
+                    y = 0;
+                    for (int i = 0; i < 8; i++) {
+                        for (int j = 0; j < 8; j++) {
+                            if (v.getId() == checker.grid[i][j].getIdCelula()) {
+                                x = i;
+                                y = j;
+                            }
+                        }
+                    }
 
 
+                    //verificaCoords se é jogada valida
+                    if (checker.check(x, y, isWhitesTurn)) {
+                        //MUDA SELECAO
+                        if (!isWhitesTurn){
+                            this.moveCounterBlack++;
+                            checker.grid[x][y].changeBlack();
+                            for (int i = 0; i < 8; i++) {
+                                for (int j = 0; j < 8; j++) {
+                                    if (checker.grid[i][j].getCellValue() == 2) {//2 é o val de preto
+                                        findViewById(checker.grid[i][j].getIdCelula()).setBackgroundResource(R.drawable.ic_black_circle);
+
+                                    }
+                                }
+                            }
+                        }
+
+
+                        //calcula trocas de cor
+
+                        //replace cells
+
+
+                        //atualiza counters
+                        counterWhite = 0;
+                        counterBlack = 0;
+                        for (i = 0; i < 64; i++) {
+                            if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_white_circle).getConstantState())) {
+                                counterWhite++;
+                            } else if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_black_circle).getConstantState())) {
+                                counterBlack++;
+                            }
+                        }
+
+                        textWhite.setText(String.format(Locale.US, ": %d", counterWhite));
+                        textBlack.setText(String.format(Locale.US, ": %d", counterBlack));
+
+
+                        //proxima jogada( , )
+                        if (usingPlay2x) {
+                            usingPlay2x = false;
                             break;
-                        case 3://Client - missing
+                        } else {
+
+                            Thread t = new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                    output.println(move);
+                                    output.flush();
+                                    } catch (Exception e) {
+                                        Log.d("RPS", "Error sending a move");
+                                    }
+                                }
+                            });
+                            t.start();
 
 
+                            triggerTurn();
+                            if (isWhitesTurn)
+                                infoBox.setText(getResources().getString(R.string.whiteTurn));
+                            else
+                                infoBox.setText(getResources().getString(R.string.blackTurn));
+
+                        }
+
+                        //fim do jogo
+                        if (counterBlack + counterWhite == 64)
+                            if (counterWhite > counterBlack)
+                                infoBox.setText(getResources().getString(R.string.whiteWon));
+                            else
+                                infoBox.setText(getResources().getString(R.string.blackWon));
+
+
+                    } else {
+                        Toast.makeText(getApplicationContext(),R.string.invalid, Toast.LENGTH_SHORT).show();
+                    }
+
+
+
+
+
+                    break;
+                case 3://Client - missing
+                    move = checker.sendBoard();
+                    x = 0;
+                    y = 0;
+                    for (int i = 0; i < 8; i++) {
+                        for (int j = 0; j < 8; j++) {
+                            if (v.getId() == checker.grid[i][j].getIdCelula()) {
+                                x = i;
+                                y = j;
+                            }
+                        }
+                    }
+
+
+                    //verificaCoords se é jogada valida
+                    if (checker.check(x, y, isWhitesTurn)) {
+                        //MUDA SELECAO
+                        if (isWhitesTurn) {
+                            this.moveCounterWhite++;
+                            checker.grid[x][y].changeWhite();
+                            for (int i = 0; i < 8; i++) {
+                                for (int j = 0; j < 8; j++) {
+                                    if (checker.grid[i][j].getCellValue() == 1) {//1 é o val de branco
+                                        findViewById(checker.grid[i][j].getIdCelula()).setBackgroundResource(R.drawable.ic_white_circle);
+                                    }
+                                }
+                            }
+                        }
+
+
+                        //calcula trocas de cor
+
+                        //replace cells
+
+
+                        //atualiza counters
+                        counterWhite = 0;
+                        counterBlack = 0;
+                        for (i = 0; i < 64; i++) {
+                            if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_white_circle).getConstantState())) {
+                                counterWhite++;
+                            } else if (findViewById(btnList[i]).getBackground().getConstantState().equals(getDrawable(R.drawable.ic_black_circle).getConstantState())) {
+                                counterBlack++;
+                            }
+                        }
+
+                        textWhite.setText(String.format(Locale.US, ": %d", counterWhite));
+                        textBlack.setText(String.format(Locale.US, ": %d", counterBlack));
+
+
+                        //proxima jogada( , )
+                        if (usingPlay2x) {
+                            usingPlay2x = false;
                             break;
+                        } else {
+
+                            Thread t = new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        output.println(move);
+                                        output.flush();
+                                    } catch (Exception e) {
+                                        Log.d("RPS", "Error sending a move");
+                                    }
+                                }
+                            });
+                            t.start();
+
+                            triggerTurn();
+                            if (isWhitesTurn)
+                                infoBox.setText(getResources().getString(R.string.whiteTurn));
+                            else
+                                infoBox.setText(getResources().getString(R.string.blackTurn));
+
+                        }
+
+                        //fim do jogo
+                        if (counterBlack + counterWhite == 64)
+                            if (counterWhite > counterBlack)
+                                infoBox.setText(getResources().getString(R.string.whiteWon));
+                            else
+                                infoBox.setText(getResources().getString(R.string.blackWon));
+
+
+                    } else {
+                        Toast.makeText(getApplicationContext(),R.string.invalid, Toast.LENGTH_SHORT).show();
+                    }
+                    break;
                     }
             }
         }
@@ -534,8 +715,7 @@ public class MainActivityGame extends Activity {
         // String ip = Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress());
         String ip = getLocalIpAddress();
         pd = new ProgressDialog(this);
-        pd.setMessage(getString(R.string.serverdlg_msg) + "\n(IP: " + ip
-                + ")");
+        pd.setMessage(getString(R.string.serverdlg_msg) + "\n(IP: " + ip + ")");
         pd.setTitle(R.string.serverdlg_title);
         pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
@@ -569,8 +749,7 @@ public class MainActivityGame extends Activity {
                     @Override
                     public void run() {
                         pd.dismiss();
-                        if (socketGame == null)
-                            finish();
+                        if (socketGame == null) finish();
                     }
                 });
             }
@@ -580,21 +759,24 @@ public class MainActivityGame extends Activity {
 
     void clientDlg() {
         final EditText edtIP = new EditText(this);
-        edtIP.setText("10.0.2.2");
+        edtIP.setText("192.168.1.91");
         AlertDialog ad = new AlertDialog.Builder(this).setTitle("RPS Client")
                 .setMessage("Server IP").setView(edtIP)
-                .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        client(edtIP.getText().toString(), PORT); // to test with emulators: PORTaux);
-                    }
-                }).setOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                        finish();
-                    }
-                }).create();
-        ad.show();
+                .setPositiveButton("Confirm",
+                        new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            client(edtIP.getText().toString(), PORT); // to test with emulators: PORTaux);
+                        }
+                    })
+                .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                        @Override
+                        public void onCancel(DialogInterface dialog) {
+                            finish();
+                        }
+                    })
+                .create();
+                ad.show();
     }
 
 
@@ -640,9 +822,14 @@ public class MainActivityGame extends Activity {
                         @Override
                         public void run() {
 
-                            //code to save the received data
+                           /*
+                           //code to save the received data
+                            checker.updateBoardNetwork(move);
 
                             //moveOtherPlayer(move); change here
+                            checker.sendBoard();
+                            //triggerTurn();
+                            */
                         }
                     });
                 }
@@ -706,7 +893,6 @@ public class MainActivityGame extends Activity {
 
 
         public void onExit (View v){
-
             finish();
         }
 
