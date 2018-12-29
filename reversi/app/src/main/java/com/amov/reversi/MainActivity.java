@@ -35,9 +35,9 @@ public class MainActivity extends Activity {
     }
 
     private void showLangSwapDialog() {
-        final String[] listItems = {"English", "Português"};
+        final String[] listItems = {getResources().getString(R.string.englishLang), getResources().getString(R.string.portugueseLang)};
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("Choose language");
+        builder.setTitle(getResources().getString(R.string.chooseLanguage));
         builder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {

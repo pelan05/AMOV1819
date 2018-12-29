@@ -21,7 +21,7 @@
     <string name="serverdlg_title">Servidor RPS</string>
     <string name="serverdlg_msg">À espera de um cliente...</string>
     <string name="game_finished">O jogo acabou</string>
-    <string name="buttonTextDescriptor">Butão de jogo</string>
+    <string name="buttonTextDescriptor">Botão de jogo</string>
     <string name="initialScore">:2</string>
     <string name="lang">Língua</string>
     <string name="avail">Disponível depois da 5ª jogada</string>
@@ -33,4 +33,7 @@
     <string name="opt2">Servidor selecionado</string>
     <string name="opt1">Jogo local selecionado</string>
     <string name="opt0">Jogo offline selecionado</string>
+    <string name="chooseLanguage">Escolha a linguagem</string>
+    <string name="englishLang">Inglês</string>
+    <string name="portugueseLang">Português</string>
 </resources>
