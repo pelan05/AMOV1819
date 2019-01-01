@@ -413,8 +413,12 @@ public class MainActivityGame extends Activity {
                         if (counterWhite > counterBlack){
                             infoBox.setText(getResources().getString(R.string.whiteWon));
                             saveEndGame();}
-                        else {
+                        else if (counterWhite < counterBlack) {
                             infoBox.setText(getResources().getString(R.string.blackWon));
+                            saveEndGame();
+                        }
+                        else{
+                            infoBox.setText(getResources().getString(R.string.tie));
                             saveEndGame();
                         }
 
@@ -774,9 +778,9 @@ public class MainActivityGame extends Activity {
     void clientDlg() {
         final EditText edtIP = new EditText(this);
         edtIP.setText("192.168.1.91");
-        AlertDialog ad = new AlertDialog.Builder(this).setTitle("RPS Client")
-                .setMessage("Server IP").setView(edtIP)
-                .setPositiveButton("Confirm",
+        AlertDialog ad = new AlertDialog.Builder(this).setTitle(getResources().getString(R.string.rpsC))
+                .setMessage(getResources().getString(R.string.serv)).setView(edtIP)
+                .setPositiveButton(getResources().getString(R.string.confirm),
                         new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {

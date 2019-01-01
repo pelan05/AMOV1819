@@ -41,4 +41,8 @@
     <string name="nothingToShow">Nothing to show here.</string>
     <string name="deleteButton">Delete History</string>
     <string name="btnHistory">History</string>
+    <string name="rpsC">RPS Client</string>
+    <string name="servIP">Server IP</string>
+    <string name="confirm">Confirmar</string>
+    <string name="tie">It\'s a tie! No one wins</string>
 </resources>

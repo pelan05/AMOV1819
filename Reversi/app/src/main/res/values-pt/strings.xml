@@ -42,4 +42,8 @@
     <string name="nothingToShow">Nada a mostrar.</string>
     <string name="deleteButton">Apagar historico</string>
     <string name="btnHistory">Historico</string>
+    <string name="rpsC">Cliente RPS</string>
+    <string name="servIP">IP do Servidor</string>
+    <string name="confirm">Confirmar</string>
+    <string name="tie">Empate, ninguém ganhou!</string>
 </resources>
