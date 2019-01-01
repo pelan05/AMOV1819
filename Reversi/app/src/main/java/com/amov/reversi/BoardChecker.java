@@ -2,17 +2,16 @@ package com.amov.reversi;
 
 import android.app.Activity;
 
-public class BoardChecker {
+import java.io.Serializable;
+
+public class BoardChecker implements Serializable {
 
     public Cell[][] grid = new Cell[8][8];
     public Integer[] values = new Integer[64];
     public int x = 0, y = 0;
 
     public boolean isWhitesTurn;
-    public boolean result;
-
-
-    public int sum = 0;
+    public transient boolean result;
 
 
     public BoardChecker(){}
@@ -47,7 +46,7 @@ public class BoardChecker {
         else
             valueInverted = 2;
 
-        sum = 0;
+        int sum = 0;
 
         if (checkcell(_x+1, _y-1, valueInverted)){
             //se for uma celula branca
@@ -518,9 +517,5 @@ public class BoardChecker {
 
         return values;
     }
-
-
-
-
 
 }

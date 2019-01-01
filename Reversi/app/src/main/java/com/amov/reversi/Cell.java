@@ -25,9 +25,7 @@ public class Cell {
 
     public void setCellValue(int val){this.cellValue = val;}
 
-    public void changeBlack(){
-        this.cellValue = 2;
-    }
+    public void changeBlack(){ this.cellValue = 2; }
 
     public void changeWhite(){
         this.cellValue = 1;
