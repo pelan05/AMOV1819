@@ -19,7 +19,7 @@
     <string name="credits">Feito por: \nPedro Lanhoso \nVasco Almeida</string>
     <string name="error_netconn">Erro de rede</string>
     <string name="serverdlg_title">Servidor RPS</string>
-    <string name="serverdlg_msg">À espera de um cliente...</string>
+    <string name="serverdlg_msg">À espera de um cliente…</string>
     <string name="game_finished">O jogo acabou</string>
     <string name="buttonTextDescriptor">Botão de jogo</string>
     <string name="initialScore">:2</string>
@@ -46,4 +46,10 @@
     <string name="servIP">IP do Servidor</string>
     <string name="confirm">Confirmar</string>
     <string name="tie">Empate, ninguém ganhou!</string>
+    <string name="saveGameText1"> ganhou com </string>
+    <string name="saveGameText2"> peças no modo </string>
+    <string name="saveMode0">jogador unico</string>
+    <string name="saveMode1">multijogador local</string>
+    <string name="saveMode2">multijogador remoto</string>
+    <string name="saveMode3">multijogador remoto</string>
 </resources>
