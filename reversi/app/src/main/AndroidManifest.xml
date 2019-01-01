@@ -32,12 +32,12 @@
         </activity>
         <activity
             android:name="com.amov.reversi.CreditsActivity"
-            android:label="Credits">
+            android:label="@string/credBtn">
 
         </activity>
         <activity
             android:name="com.amov.reversi.HistoricActivity"
-            android:label="History">
+            android:label="@string/btnHistory">
 
         </activity>
 
