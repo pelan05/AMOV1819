@@ -51,5 +51,6 @@
     <string name="saveMode0">jogador unico</string>
     <string name="saveMode1">multijogador local</string>
     <string name="saveMode2">multijogador remoto</string>
-    <string name="saveMode3">multijogador remoto</string>
+    <string name="saveMode3">ultijogador remoto</string>
+    <string name="modo">Mode</string>
 </resources>

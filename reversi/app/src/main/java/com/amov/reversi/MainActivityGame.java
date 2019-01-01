@@ -960,7 +960,10 @@ public class MainActivityGame extends Activity {
             }
         }
 
-
+        public void onModeSkip(View v){
+            this.mode = 0;
+            this.isWhitesTurn = false;
+        }
 
 
         public void onExit (View v){
