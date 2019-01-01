@@ -912,33 +912,38 @@ public class MainActivityGame extends Activity {
             String FILENAME = "gameScores";
             String winner = " ";
             String gameModeName = " ";
+            String string;
             int finalCounter = 0;
 
             switch (mode){
                 case 0:
-                    gameModeName = "Single Player";
+                    gameModeName = getResources().getString(R.string.saveMode0);
                     break;
                 case 1:
-                    gameModeName = "Local Multiplayer";
+                    gameModeName = getResources().getString(R.string.saveMode1);
                     break;
                 case 2:
-                    gameModeName = "Remote Multiplayer";
+                    gameModeName = getResources().getString(R.string.saveMode2);
                     break;
                 case 3:
-                    gameModeName = "Remote Multiplayer";
+                    gameModeName = getResources().getString(R.string.saveMode3);
                     break;
             }
 
             if( counterWhite > counterBlack ) {
                 winner = "White";
                 finalCounter = counterWhite;
-            }else {
+                string = winner + " " + getResources().getString(R.string.saveGameText1) + " " + finalCounter + " " + getResources().getString(R.string.saveGameText2) + " " + gameModeName + "! ";
+            }else if(counterWhite < counterBlack){
                 winner = "Black";
                 finalCounter = counterBlack;
+                string = winner + " " + getResources().getString(R.string.saveGameText1) + " " + finalCounter + " " + getResources().getString(R.string.saveGameText2) + " " + gameModeName + "! ";
             }
+            else
+                string = "It's a tie!!";
 
             //respetivos vencedores, modos de jogo e resultados obtidos.
-            String string = winner + " won with " + finalCounter + " pieces in game mode " + gameModeName + "! ";
+
 
             FileOutputStream fos = null;
             try {

@@ -46,8 +46,8 @@
     <string name="servIP">IP do Servidor</string>
     <string name="confirm">Confirmar</string>
     <string name="tie">Empate, ninguém ganhou!</string>
-    <string name="saveGameText1"> ganhou com </string>
-    <string name="saveGameText2"> peças no modo </string>
+    <string name="saveGameText1">ganhou com</string>
+    <string name="saveGameText2">peças no modo</string>
     <string name="saveMode0">jogador unico</string>
     <string name="saveMode1">multijogador local</string>
     <string name="saveMode2">multijogador remoto</string>

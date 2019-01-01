@@ -45,8 +45,8 @@
     <string name="servIP">Server IP</string>
     <string name="confirm">Confirmar</string>
     <string name="tie">It\'s a tie! No one wins</string>
-    <string name="saveGameText1"> won with </string>
-    <string name="saveGameText2"> pieces in the game mode </string>
+    <string name="saveGameText1">won with</string>
+    <string name="saveGameText2">pieces in the game mode</string>
     <string name="saveMode0">single player</string>
     <string name="saveMode1">local multiplayer</string>
     <string name="saveMode2">remote multiplayer</string>
