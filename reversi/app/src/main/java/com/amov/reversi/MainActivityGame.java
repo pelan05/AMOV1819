@@ -35,6 +35,7 @@ import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Locale;
+import java.util.Random;
 
 public class MainActivityGame extends Activity {
 
@@ -357,24 +358,25 @@ public class MainActivityGame extends Activity {
                         textBlack.setText(String.format(Locale.US, ": %d", counterBlack));
 
 
-                    }
-
-                    if (usingPlay2x) {
-                        usingPlay2x = false;
-                        break;
-                    } else {
-                        infoBox.setText(getResources().getString(R.string.whiteTurn));
+                        if (usingPlay2x) {
+                            usingPlay2x = false;
+                            break;
+                        } else {
+                            infoBox.setText(getResources().getString(R.string.whiteTurn));
 
                         /*try {
                             Thread.sleep(2000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }*/
-                        //receber celula alvo (x, y) nao usados?
-                        //x=?;
-                        //y=?;
-                        for (int i = 0; i < 8; i++) {
-                            for (int j = 0; j < 8; j++) {
+                            //receber celula alvo (x, y) nao usados?
+                            //x=?;
+                            //y=?;
+                        /*for (int i = 0; i < 8; i++) {
+                            for (int j = 0; j < 8; j++) {*/
+                            while (true) {
+                                i = new Random().nextInt(8);
+                                j = new Random().nextInt(8);
                                 if (checker.check(i, j, true)) {//true meANS IT'S whites turn
                                     this.moveCounterWhite++;
                                     checker.grid[i][j].changeWhite();
@@ -385,10 +387,11 @@ public class MainActivityGame extends Activity {
                                             }
                                         }
                                     }
-                                    i = j = 8; break;
+                                    break;
                                 }
                             }
-                        }
+                          /*  }
+                        }*/
 
 
                             counterWhite = 0;
@@ -405,7 +408,9 @@ public class MainActivityGame extends Activity {
                             textBlack.setText(String.format(Locale.US, ": %d", counterBlack));
 
 
-                        infoBox.setText(getResources().getString(R.string.blackTurn));
+                            infoBox.setText(getResources().getString(R.string.blackTurn));
+                        }
+
                     }
 
                     //fim do jogo
