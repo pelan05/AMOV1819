@@ -21,6 +21,8 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -408,10 +410,13 @@ public class MainActivityGame extends Activity {
 
                     //fim do jogo
                     if (counterBlack + counterWhite == 64)
-                        if (counterWhite > counterBlack)
+                        if (counterWhite > counterBlack){
                             infoBox.setText(getResources().getString(R.string.whiteWon));
-                        else
+                            saveEndGame();}
+                        else {
                             infoBox.setText(getResources().getString(R.string.blackWon));
+                            saveEndGame();
+                        }
 
 
             }else{
@@ -497,10 +502,13 @@ public class MainActivityGame extends Activity {
 
                         //fim do jogo
                         if (counterBlack + counterWhite == 64)
-                            if (counterWhite > counterBlack)
+                            if (counterWhite > counterBlack){
                                 infoBox.setText(getResources().getString(R.string.whiteWon));
-                            else
+                                saveEndGame();}
+                            else {
                                 infoBox.setText(getResources().getString(R.string.blackWon));
+                                saveEndGame();
+                            }
 
 
                 } else {
@@ -593,10 +601,13 @@ public class MainActivityGame extends Activity {
 
                         //fim do jogo
                         if (counterBlack + counterWhite == 64)
-                            if (counterWhite > counterBlack)
+                            if (counterWhite > counterBlack){
                                 infoBox.setText(getResources().getString(R.string.whiteWon));
-                            else
+                                saveEndGame();}
+                            else {
                                 infoBox.setText(getResources().getString(R.string.blackWon));
+                                saveEndGame();
+                            }
 
 
                     } else {
@@ -687,10 +698,13 @@ public class MainActivityGame extends Activity {
 
                         //fim do jogo
                         if (counterBlack + counterWhite == 64)
-                            if (counterWhite > counterBlack)
+                            if (counterWhite > counterBlack){
                                 infoBox.setText(getResources().getString(R.string.whiteWon));
-                            else
+                                saveEndGame();}
+                            else {
                                 infoBox.setText(getResources().getString(R.string.blackWon));
+                                saveEndGame();
+                            }
 
 
                     } else {
@@ -879,16 +893,59 @@ public class MainActivityGame extends Activity {
         return null;
     }
 
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
+
+
+
+
+
+
+        public void saveEndGame(){
+            String FILENAME = "gameScores";
+            String winner = " ";
+            String gameModeName = " ";
+            int finalCounter = 0;
+
+            switch (mode){
+                case 0:
+                    gameModeName = "Single Player";
+                    break;
+                case 1:
+                    gameModeName = "Local Multiplayer";
+                    break;
+                case 2:
+                    gameModeName = "Remote Multiplayer";
+                    break;
+                case 3:
+                    gameModeName = "Remote Multiplayer";
+                    break;
+            }
+
+            if( counterWhite > counterBlack ) {
+                winner = "White";
+                finalCounter = counterWhite;
+            }else {
+                winner = "Black";
+                finalCounter = counterBlack;
+            }
+
+            //respetivos vencedores, modos de jogo e resultados obtidos.
+            String string = winner + " won with " + finalCounter + " pieces in game mode " + gameModeName + "! ";
+
+            FileOutputStream fos = null;
+            try {
+
+                fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
+                fos.write(string.getBytes());
+                fos.close();
+
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
 
 
 

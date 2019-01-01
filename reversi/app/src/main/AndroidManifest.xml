@@ -35,6 +35,11 @@
             android:label="Credits">
 
         </activity>
+        <activity
+            android:name="com.amov.reversi.HistoricActivity"
+            android:label="History">
+
+        </activity>
 
     </application>
 

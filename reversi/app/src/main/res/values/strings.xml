@@ -27,6 +27,7 @@
     <string name="used">Already used</string>
     <string name="twice">Play 2x selected</string>
     <string name="skippu">Skipping turn</string>
+    <string name="optHist">Check History</string>
     <string name="optCrd">Credits selected</string>
     <string name="opt3">Client selected</string>
     <string name="opt2">Server selected</string>
@@ -35,4 +36,9 @@
     <string name="chooseLanguage">Choose Language</string>
     <string name="englishLang">English</string>
     <string name="portugueseLang">Portuguese</string>
+    <string name="deletedYes">File deleted!</string>
+    <string name="deletedNo">File not deleted! (Err)</string>
+    <string name="nothingToShow">Nothing to show here.</string>
+    <string name="deleteButton">Delete History</string>
+    <string name="btnHistory">History</string>
 </resources>

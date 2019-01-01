@@ -28,6 +28,7 @@
     <string name="used">Já usado</string>
     <string name="twice">Jogada dupla selecionada</string>
     <string name="skippu">Saltando a jogada</string>
+    <string name="optHist">Ver Histórico</string>
     <string name="optCrd">Créditos selecionados</string>
     <string name="opt3">Cliente selecionado</string>
     <string name="opt2">Servidor selecionado</string>
@@ -36,4 +37,9 @@
     <string name="chooseLanguage">Escolha a linguagem</string>
     <string name="englishLang">Inglês</string>
     <string name="portugueseLang">Português</string>
+    <string name="deletedYes">Ficheiro apagado!</string>
+    <string name="deletedNo">File não apagado! (Err)</string>
+    <string name="nothingToShow">Nada a mostrar.</string>
+    <string name="deleteButton">Apagar historico</string>
+    <string name="btnHistory">Historico</string>
 </resources>

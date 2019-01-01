@@ -76,10 +76,23 @@
         android:text="@string/serv"
         android:textStyle="bold"
         android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
+
     <Button
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginTop="48dp"
+        android:id="@+id/btnHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onHistory"
+        android:text="@string/btnHistory"
+        android:textStyle="bold"
+        android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
+
+    <Button
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="16dp"
         android:id="@+id/btnCredits"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -95,6 +108,7 @@
         android:id="@+id/btnLang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Holo.Medium"
         android:text="@string/lang"
         android:textStyle="bold" />
 

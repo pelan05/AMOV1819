@@ -79,13 +79,7 @@ public class MainActivity extends Activity {
 
 
     public void onLocal(View v)
-    {
-        Context context = getApplicationContext();
-        CharSequence text = getResources().getString(R.string.opt0);
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
+    {   Toast.makeText(getApplicationContext(), getResources().getString(R.string.opt0) , Toast.LENGTH_SHORT).show();
 
         Intent intentLocal =new Intent(this, MainActivityGame.class);
         intentLocal.putExtra("mode", MainActivityGame.SINGLEPLAYER);
@@ -94,13 +88,7 @@ public class MainActivity extends Activity {
 
 
     public void onMulti(View v)
-    {
-        Context context = getApplicationContext();
-        CharSequence text = getResources().getString(R.string.opt1);
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
+    {   Toast.makeText(getApplicationContext(), getResources().getString(R.string.opt1) , Toast.LENGTH_SHORT).show();
 
         Intent intentMulti =new Intent(this, MainActivityGame.class);
         intentMulti.putExtra("mode", MainActivityGame.MULTILOCAL);
@@ -109,13 +97,7 @@ public class MainActivity extends Activity {
 
 
     public void onServer(View v)
-    {
-        Context context = getApplicationContext();
-        CharSequence text = getResources().getString(R.string.opt2);
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
+    {   Toast.makeText(getApplicationContext(), getResources().getString(R.string.opt2) , Toast.LENGTH_SHORT).show();
 
         Intent intentServer=new Intent(this, MainActivityGame.class);
         intentServer.putExtra("mode", MainActivityGame.SERVER);
@@ -123,32 +105,25 @@ public class MainActivity extends Activity {
     }
 
     public void onClient(View v)
-    {
-        Context context = getApplicationContext();
-        CharSequence text = getResources().getString(R.string.opt3);
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-
+    {   Toast.makeText(getApplicationContext(),getResources().getString(R.string.deletedYes), Toast.LENGTH_SHORT).show();
 
         Intent intentClient=new Intent(this, MainActivityGame.class);
         intentClient.putExtra("mode", MainActivityGame.CLIENT);
         startActivity(intentClient);
     }
     public void onCredits (View v)
-    {
-        Context context = getApplicationContext();
-        CharSequence text = getResources().getString(R.string.optCrd);
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-
+    {   Toast.makeText(getApplicationContext(),getResources().getString(R.string.optCrd), Toast.LENGTH_SHORT).show();
 
         Intent intentClient=new Intent(this, CreditsActivity.class);
         startActivity(intentClient);
     }
+    public void onHistory(View v)
+    {   Toast.makeText(getApplicationContext(),getResources().getString(R.string.optHist), Toast.LENGTH_SHORT).show();
+
+        Intent intentLocal =new Intent(this, HistoricActivity.class);
+        startActivity(intentLocal);
+    }
+
 
 
 
