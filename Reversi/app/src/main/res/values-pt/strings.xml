@@ -18,7 +18,7 @@
     <string name="whiteTurn">Vez das brancas</string>
     <string name="credits">Feito por: \nPedro Lanhoso \nVasco Almeida</string>
     <string name="error_netconn">Erro de rede</string>
-    <string name="serverdlg_title">Servidor RPS</string>
+    <string name="serverdlg_title">Servidor</string>
     <string name="serverdlg_msg">À espera de um cliente…</string>
     <string name="game_finished">O jogo acabou</string>
     <string name="buttonTextDescriptor">Botão de jogo</string>
@@ -42,7 +42,7 @@
     <string name="nothingToShow">Nada a mostrar.</string>
     <string name="deleteButton">Apagar historico</string>
     <string name="btnHistory">Historico</string>
-    <string name="rpsC">Cliente RPS</string>
+    <string name="rpsC">Cliente</string>
     <string name="servIP">IP do Servidor</string>
     <string name="confirm">Confirmar</string>
     <string name="tie">Empate, ninguém ganhou!</string>

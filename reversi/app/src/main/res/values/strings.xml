@@ -19,7 +19,7 @@
     <string name="whiteTurn">White\'s move</string>
     <string name="credits">Game made by: \nPedro Lanhoso \nVasco Almeida</string>
     <string name="error_netconn">Network Error</string>
-    <string name="serverdlg_title">RPS Server</string>
+    <string name="serverdlg_title">Server</string>
     <string name="serverdlg_msg">Waiting for a client...</string>
     <string name="game_finished">The game has ended</string>
     <string name="lang">Language</string>
@@ -41,7 +41,7 @@
     <string name="nothingToShow">Nothing to show here.</string>
     <string name="deleteButton">Delete History</string>
     <string name="btnHistory">History</string>
-    <string name="rpsC">RPS Client</string>
+    <string name="rpsC">Client</string>
     <string name="servIP">Server IP</string>
     <string name="confirm">Confirmar</string>
     <string name="tie">It\'s a tie! No one wins</string>
